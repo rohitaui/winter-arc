@@ -2,8 +2,33 @@
 create table if not exists public.profiles (
   id uuid primary key references auth.users(id) on delete cascade,
   display_name text,
+  gender text,
+  date_of_birth date,
+  height_feet smallint check (height_feet is null or height_feet between 1 and 8),
+  height_inches smallint check (height_inches is null or height_inches between 0 and 11),
+  weight_kg numeric(5,2) check (weight_kg is null or weight_kg between 1 and 500),
   created_at timestamptz not null default now()
 );
+
+-- Safe migration for existing Winter Arc projects
+alter table public.profiles add column if not exists gender text;
+alter table public.profiles add column if not exists date_of_birth date;
+alter table public.profiles add column if not exists height_feet smallint;
+alter table public.profiles add column if not exists height_inches smallint;
+alter table public.profiles add column if not exists weight_kg numeric(5,2);
+
+DO $$
+BEGIN
+  IF NOT EXISTS (SELECT 1 FROM pg_constraint WHERE conname = 'profiles_height_feet_check') THEN
+    ALTER TABLE public.profiles ADD CONSTRAINT profiles_height_feet_check CHECK (height_feet IS NULL OR height_feet BETWEEN 1 AND 8);
+  END IF;
+  IF NOT EXISTS (SELECT 1 FROM pg_constraint WHERE conname = 'profiles_height_inches_check') THEN
+    ALTER TABLE public.profiles ADD CONSTRAINT profiles_height_inches_check CHECK (height_inches IS NULL OR height_inches BETWEEN 0 AND 11);
+  END IF;
+  IF NOT EXISTS (SELECT 1 FROM pg_constraint WHERE conname = 'profiles_weight_check') THEN
+    ALTER TABLE public.profiles ADD CONSTRAINT profiles_weight_check CHECK (weight_kg IS NULL OR weight_kg BETWEEN 1 AND 500);
+  END IF;
+END $$;
 
 create table if not exists public.arc_days (
   user_id uuid not null references auth.users(id) on delete cascade,

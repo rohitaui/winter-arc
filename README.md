@@ -40,3 +40,7 @@ Then open `http://localhost:8080`.
 ## Before public launch
 
 Add a privacy policy, account deletion flow, email verification/password reset, analytics consent if needed, and a proper production domain.
+
+
+## Profile
+The app includes a signed-in Profile page with name, gender, date of birth, height (feet/inches), weight (kg), cloud sync via Supabase, and logout. Run `profile_migration.sql` once in Supabase for existing projects before saving profile details.
