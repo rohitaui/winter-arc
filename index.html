@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Winter Arc — 92</title>
+<style>
+:root{--bg:#090b0f;--panel:#11151b;--panel2:#171c23;--line:#262d37;--text:#f4f6f8;--muted:#8e98a5;--accent:#b9e7ff;--accent2:#7bd0ff;--success:#a9e6bd;--danger:#ff8f8f;--radius:22px;--shadow:0 20px 60px rgba(0,0,0,.28)}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:radial-gradient(1000px 600px at 70% -10%,#173244 0%,transparent 55%),var(--bg);color:var(--text);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;line-height:1.45}button,input,textarea{font:inherit}button{cursor:pointer}.app{min-height:100vh;display:grid;grid-template-columns:240px 1fr}.sidebar{position:sticky;top:0;height:100vh;border-right:1px solid var(--line);padding:28px 18px;display:flex;flex-direction:column;background:rgba(9,11,15,.78);backdrop-filter:blur(18px)}.brand{padding:8px 10px 30px}.brand small{color:var(--accent);letter-spacing:.16em;font-size:10px;font-weight:800}.brand h1{font-size:28px;letter-spacing:-.06em;margin:7px 0 0}.nav{display:grid;gap:7px}.nav button{border:0;background:transparent;color:var(--muted);padding:12px 13px;border-radius:12px;text-align:left}.nav button.active,.nav button:hover{background:var(--panel2);color:var(--text)}.arc-meta{margin-top:auto;padding:16px;border:1px solid var(--line);border-radius:16px;background:var(--panel)}.arc-meta .label{font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.12em}.arc-meta strong{display:block;font-size:20px;margin:4px 0 10px}.bar{height:5px;background:#222a33;border-radius:99px;overflow:hidden}.bar i{display:block;height:100%;background:var(--accent);width:0;border-radius:inherit}.main{max-width:1180px;width:100%;margin:auto;padding:36px 42px 60px}.top{display:flex;justify-content:space-between;gap:20px;align-items:flex-end;margin-bottom:30px}.eyebrow{color:var(--accent);font-size:11px;letter-spacing:.18em;text-transform:uppercase;font-weight:800}.hero h2{font-size:clamp(36px,5vw,68px);line-height:.98;letter-spacing:-.065em;margin:8px 0 10px;max-width:800px}.hero p{color:var(--muted);margin:0;max-width:680px}.date{color:var(--muted);font-size:13px;text-align:right}.grid{display:grid;grid-template-columns:1.35fr .65fr;gap:18px}.card{background:linear-gradient(145deg,rgba(23,28,35,.96),rgba(15,18,24,.96));border:1px solid var(--line);border-radius:var(--radius);padding:22px;box-shadow:var(--shadow)}.card h3{margin:0;font-size:19px;letter-spacing:-.025em}.card-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:17px}.muted{color:var(--muted)}.today-card{grid-row:span 2}.mission{display:flex;justify-content:space-between;align-items:end;padding-bottom:18px;border-bottom:1px solid var(--line);margin-bottom:15px}.mission .big{font-size:42px;letter-spacing:-.06em;font-weight:800}.pill{font-size:11px;color:var(--accent);border:1px solid #36566a;padding:6px 9px;border-radius:999px;background:#10202a}.tasks{display:grid;gap:9px}.task{display:flex;align-items:center;gap:12px;padding:12px;border:1px solid transparent;border-radius:13px;background:#0d1116}.task.done{border-color:#294c39;background:#101a15}.check{width:22px;height:22px;border:1px solid #4b5663;border-radius:7px;display:grid;place-items:center;flex:none}.task.done .check{background:var(--success);border-color:var(--success);color:#09110c}.task-text{flex:1}.task-text strong{display:block;font-size:14px}.task-text span{font-size:12px;color:var(--muted)}.task button{border:0;background:transparent;color:var(--muted);font-size:12px}.workout-list{display:grid;gap:8px}.exercise{display:flex;align-items:center;justify-content:space-between;padding:11px 12px;background:#0d1116;border-radius:12px}.exercise b{font-size:13px}.exercise span{color:var(--accent);font-size:12px}.primary{border:0;border-radius:13px;background:var(--text);color:#0a0d11;padding:12px 16px;font-weight:800}.secondary{border:1px solid var(--line);border-radius:13px;background:transparent;color:var(--text);padding:11px 15px}.actions{display:flex;gap:8px;margin-top:14px}.stat-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}.stat{background:#0d1116;border:1px solid #1e252d;border-radius:14px;padding:15px}.stat strong{display:block;font-size:27px;letter-spacing:-.05em}.stat span{font-size:11px;color:var(--muted)}.week{display:grid;grid-template-columns:repeat(7,1fr);gap:7px}.day{min-width:0;text-align:center}.day span{font-size:10px;color:var(--muted);display:block;margin-bottom:6px}.dot{aspect-ratio:1;border-radius:50%;background:#1c232c;border:1px solid #2a323d;display:grid;place-items:center;font-size:11px;color:var(--muted)}.dot.done{background:var(--success);color:#0b130e;border-color:var(--success)}.dot.today{outline:2px solid var(--accent);outline-offset:2px}.progress-wrap{display:flex;align-items:center;gap:15px}.ring{width:88px;height:88px;border-radius:50%;background:conic-gradient(var(--accent) var(--p,0%),#232a33 0);display:grid;place-items:center;position:relative}.ring:after{content:"";position:absolute;inset:8px;background:var(--panel);border-radius:50%}.ring strong{position:relative;z-index:1}.page{display:none}.page.active{display:block}.plan-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.phase{padding:20px;border:1px solid var(--line);border-radius:18px;background:var(--panel)}.phase .num{font-size:11px;color:var(--accent);font-weight:800;letter-spacing:.12em}.phase h3{margin:8px 0 5px;font-size:22px}.phase p{font-size:13px;color:var(--muted)}.calendar{display:grid;grid-template-columns:repeat(7,1fr);gap:6px}.calday{min-height:75px;border:1px solid var(--line);border-radius:10px;padding:7px;background:#0d1116}.calday small{color:var(--muted)}.calday.done{border-color:#2e5941}.calday.today{outline:1px solid var(--accent)}.journal textarea{width:100%;min-height:180px;resize:vertical;background:#0b0f14;color:var(--text);border:1px solid var(--line);border-radius:14px;padding:15px;outline:none}.journal textarea:focus{border-color:#4c6879}.modal{position:fixed;inset:0;background:rgba(0,0,0,.7);backdrop-filter:blur(10px);display:none;align-items:center;justify-content:center;padding:20px;z-index:10}.modal.open{display:flex}.modal-card{width:min(560px,100%);background:#11161d;border:1px solid var(--line);border-radius:24px;padding:25px}.modal-top{display:flex;justify-content:space-between;align-items:start}.close{border:0;background:transparent;color:var(--muted);font-size:22px}.timer{font-size:82px;letter-spacing:-.08em;text-align:center;margin:30px 0 20px}.exercise-progress{font-size:12px;color:var(--muted);text-align:center}.modal-actions{display:flex;justify-content:center;gap:10px}.toast{position:fixed;right:20px;bottom:20px;background:#f4f6f8;color:#0a0d11;padding:12px 15px;border-radius:12px;font-size:13px;font-weight:700;transform:translateY(120px);transition:.25s;z-index:20}.toast.show{transform:translateY(0)}@media(max-width:850px){.app{display:block}.sidebar{position:sticky;height:auto;z-index:5;top:0;padding:12px 14px;border-right:0;border-bottom:1px solid var(--line);display:block}.brand{display:flex;align-items:center;justify-content:space-between;padding:3px 4px 10px}.brand h1{font-size:22px}.nav{display:flex;overflow:auto}.nav button{white-space:nowrap;padding:8px 10px}.arc-meta{display:none}.main{padding:24px 16px 50px}.top{display:block}.date{text-align:left;margin-top:10px}.grid{grid-template-columns:1fr}.today-card{grid-row:auto}.plan-grid{grid-template-columns:1fr}.calendar{grid-template-columns:repeat(4,1fr)}}
+
+/* Winter Arc — Light Theme */
+:root{--bg:#f5f8fb;--panel:#ffffff;--panel2:#eef5f9;--line:#d9e3ea;--text:#14212b;--muted:#687784;--accent:#2f8fc5;--accent2:#66b9e5;--success:#9edbb8;--danger:#d95c5c;--radius:22px;--shadow:0 18px 50px rgba(32,65,88,.10)}
+body{background:radial-gradient(1000px 600px at 70% -10%,#dff2fc 0%,transparent 55%),var(--bg);color:var(--text)}
+.sidebar{background:rgba(255,255,255,.88);}
+.nav button.active,.nav button:hover{background:var(--panel2);color:var(--text)}
+.arc-meta{background:var(--panel)}
+.bar{background:#e3ebf0}
+.card{background:linear-gradient(145deg,rgba(255,255,255,.98),rgba(248,251,253,.98));}
+.pill{color:#267ba9;border-color:#b9d7e8;background:#edf8fd}
+.task{background:#f4f7f9}
+.task.done{border-color:#b8dcc8;background:#eff9f3}
+.check{border-color:#aebcc7}
+.task.done .check{color:#173a28}
+.exercise{background:#f4f7f9}
+.primary{background:var(--text);color:#fff}
+.secondary{background:#fff;color:var(--text)}
+.stat{background:#f4f7f9;border-color:#e0e8ed}
+.dot{background:#e7edf1;border-color:#d5dfe6;color:#687784}
+.dot.done{color:#173a28}
+.ring{background:conic-gradient(var(--accent) var(--p,0%),#dfe8ee 0)}
+.ring:after{background:var(--panel)}
+.phase{background:var(--panel)}
+.calday{background:#f4f7f9}
+.journal textarea{background:#f8fafb;color:var(--text)}
+.modal{background:rgba(28,45,56,.34)}
+.modal-card{background:#fff}
+.toast{background:#14212b;color:#fff}
+
+.account-btn{border:1px solid var(--line);background:#fff;color:var(--text);border-radius:11px;padding:8px 10px;font-size:12px;font-weight:800}.brand{gap:8px}.auth{position:fixed;inset:0;background:rgba(28,45,56,.34);backdrop-filter:blur(10px);display:none;align-items:center;justify-content:center;padding:20px;z-index:30}.auth.open{display:flex}.auth-card{width:min(430px,100%);background:#fff;border:1px solid var(--line);border-radius:24px;padding:26px;box-shadow:0 24px 80px rgba(32,65,88,.18)}.auth-card h2{font-size:34px;letter-spacing:-.05em;margin:8px 0}.auth-card label{display:grid;gap:6px;font-size:12px;font-weight:800;margin-top:14px}.auth-card input{width:100%;border:1px solid var(--line);border-radius:12px;padding:12px;background:#f8fafb;color:var(--text);outline:none}.auth-card input:focus{border-color:var(--accent)}.auth-tabs{display:grid;grid-template-columns:1fr 1fr;background:#eef5f9;border-radius:12px;padding:3px;margin:20px 0 4px}.auth-tab{border:0;background:transparent;padding:9px;border-radius:9px;color:var(--muted);font-weight:800}.auth-tab.active{background:#fff;color:var(--text);box-shadow:0 2px 8px rgba(32,65,88,.08)}.auth-submit{width:100%;margin-top:18px}.auth-close{width:100%;margin-top:8px}.auth-status{font-size:12px;color:var(--muted);margin-top:12px;min-height:18px}.hidden{display:none!important}.account-menu{position:fixed;top:18px;right:20px;width:230px;background:#fff;border:1px solid var(--line);border-radius:16px;padding:14px;box-shadow:0 18px 50px rgba(32,65,88,.14);display:none;z-index:20}.account-menu.open{display:block}.account-menu strong,.account-menu span{display:block}.account-menu strong{font-size:13px;word-break:break-word}.account-menu span{font-size:11px;color:var(--muted);margin-top:2px}.account-menu button{margin-top:12px;border:0;background:#eef5f9;border-radius:10px;padding:9px 12px;font-weight:800;width:100%;color:var(--text)}@media(max-width:850px){.brand{align-items:center}.account-btn{margin-left:auto}}
+</style>
+</head>
+<body>
+<div class="app">
+<aside class="sidebar">
+  <div class="brand"><div><small>92 DAY CHALLENGE</small><h1>WINTER ARC</h1></div><button id="accountButton" class="account-btn">Sign in</button></div>
+  <nav class="nav">
+    <button class="active" data-page="today">Today</button>
+    <button data-page="progress">Progress</button>
+    <button data-page="plan">Plan</button>
+    <button data-page="journal">Journal</button>
+  </nav>
+  <div class="arc-meta"><div class="label">Arc progress</div><strong id="sideProgress">Day 1 / 92</strong><div class="bar"><i id="sideBar"></i></div></div>
+</aside>
+<main class="main">
+<section id="today" class="page active">
+  <div class="top"><div class="hero"><div class="eyebrow">Thursday · October 1, 2026</div><h2>Build the foundation.</h2><p>Day 1 is deliberately easy. Your only job today is to show up.</p></div><div class="date">WINTER ARC 01 / 92</div></div>
+  <div class="grid">
+    <div class="card today-card">
+      <div class="mission"><div><div class="muted" style="font-size:12px">TODAY'S MISSION</div><div class="big" id="taskCount">0 / 5</div></div><span class="pill">BEGINNER</span></div>
+      <div class="tasks" id="tasks"></div>
+    </div>
+    <div class="card">
+      <div class="card-head"><h3>Today's workout</h3><span class="muted">~25 min</span></div>
+      <div class="workout-list" id="workoutList"></div>
+      <div class="actions"><button class="primary" id="startWorkout">Start workout</button></div>
+    </div>
+    <div class="card">
+      <div class="card-head"><h3>This week</h3><span class="muted" id="weekCount">0 / 7</span></div>
+      <div class="week" id="week"></div>
+    </div>
+    <div class="card">
+      <div class="card-head"><h3>Keep it simple</h3></div>
+      <p class="muted" style="margin:0;font-size:14px">Move, eat intentionally, drink water, write a little, and protect your sleep. You don't need a perfect day. You need a repeatable one.</p>
+    </div>
+  </div>
+</section>
+<section id="progress" class="page">
+  <div class="top"><div class="hero"><div class="eyebrow">THE ARC</div><h2>Progress you can see.</h2><p>Small wins compound. Keep showing up.</p></div></div>
+  <div class="grid">
+    <div class="card"><div class="card-head"><h3>92-day progress</h3><span class="muted" id="progressLabel">1%</span></div><div class="progress-wrap"><div class="ring" id="ring"><strong id="ringText">1%</strong></div><div><div style="font-size:25px;font-weight:800" id="dayLabel">Day 1 / 92</div><div class="muted">The goal is consistency, not perfection.</div></div></div></div>
+    <div class="card"><div class="card-head"><h3>Stats</h3></div><div class="stat-grid"><div class="stat"><strong id="completedDays">0</strong><span>DAYS COMPLETED</span></div><div class="stat"><strong id="streak">0</strong><span>CURRENT STREAK</span></div><div class="stat"><strong id="workouts">0</strong><span>WORKOUTS</span></div><div class="stat"><strong>92</strong><span>TOTAL DAYS</span></div></div></div>
+    <div class="card" style="grid-column:1/-1"><div class="card-head"><h3>Milestones</h3></div><div class="plan-grid"><div class="phase"><div class="num">DAY 01</div><h3>Started 🌱</h3><p>You stopped planning and actually began.</p></div><div class="phase"><div class="num">DAY 30</div><h3>One Month 🔥</h3><p>A month of consistent action.</p></div><div class="phase"><div class="num">DAY 92</div><h3>Arc Complete 🏆</h3><p>Finish what you started.</p></div></div></div>
+  </div>
+</section>
+<section id="plan" class="page">
+  <div class="top"><div class="hero"><div class="eyebrow">THE ROADMAP</div><h2>92 days. Three phases.</h2><p>Difficulty increases slowly. We are building a lifestyle, not chasing exhaustion.</p></div></div>
+  <div class="plan-grid"><div class="phase"><div class="num">01 · OCTOBER</div><h3>Foundation</h3><p>Learn the movements, establish your routine, and make showing up normal.</p><b>Beginner → 2 rounds</b></div><div class="phase"><div class="num">02 · NOVEMBER</div><h3>Build</h3><p>Increase reps, add resistance, and extend cardio gradually.</p><b>2 → 3 rounds</b></div><div class="phase"><div class="num">03 · DECEMBER</div><h3>Transform</h3><p>Progress the movements, maintain consistency, and finish the year strong.</p><b>Challenge month</b></div></div>
+  <div class="card" style="margin-top:18px"><div class="card-head"><h3>October calendar</h3><span class="muted">Day 1 starts today</span></div><div class="calendar" id="calendar"></div></div>
+</section>
+<section id="journal" class="page">
+  <div class="top"><div class="hero"><div class="eyebrow">DAILY REFLECTION</div><h2>Leave a record of the arc.</h2><p>One honest paragraph is enough.</p></div></div>
+  <div class="card journal"><div class="card-head"><h3>Day 1 journal</h3><span class="muted">Saved automatically</span></div><textarea id="journalText" placeholder="Why am I doing this?\n\nBy December 31, I want to be...\n\nToday I feel...\n\nOne thing I'm proud of..."></textarea><div class="actions"><button class="primary" id="saveJournal">Save entry</button></div></div>
+</section>
+</main></div>
+<div class="auth" id="authPanel">
+  <div class="auth-card">
+    <div class="eyebrow">CLOUD SYNC</div>
+    <h2>Keep your arc with you.</h2>
+    <p class="muted">Create an account to sync your Winter Arc across devices. Your local progress stays available too.</p>
+    <div class="auth-tabs"><button class="auth-tab active" data-auth="signin">Sign in</button><button class="auth-tab" data-auth="signup">Create account</button></div>
+    <label>Email<input id="authEmail" type="email" autocomplete="email" placeholder="you@example.com"></label>
+    <label>Password<input id="authPassword" type="password" autocomplete="current-password" placeholder="At least 6 characters"></label>
+    <label id="nameField" class="hidden">Name<input id="authName" type="text" autocomplete="name" placeholder="Your name"></label>
+    <button class="primary auth-submit" id="authSubmit">Sign in</button>
+    <button class="secondary auth-close" id="authClose">Not now</button>
+    <div class="auth-status" id="authStatus"></div>
+  </div>
+</div>
+<div class="account-menu" id="accountMenu">
+  <div><strong id="accountEmail"></strong><span>Cloud synced</span></div>
+  <button id="signOut">Sign out</button>
+</div>
+<div class="modal" id="modal"><div class="modal-card"><div class="modal-top"><div><div class="eyebrow">WORKOUT MODE</div><h3 id="modalTitle" style="font-size:25px;margin:5px 0">Bodyweight Squats</h3></div><button class="close" id="closeModal">×</button></div><div class="exercise-progress" id="exerciseProgress">1 / 7 · 10 reps</div><div class="timer" id="timer">10</div><div class="modal-actions"><button class="secondary" id="skipRest">Skip</button><button class="primary" id="nextExercise">Done</button></div></div></div>
+<div class="toast" id="toast">Saved</div>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="config.js"></script>
+<script>
+const workouts=[['Bodyweight Squats','10 reps'],['Incline Push-ups','8 reps'],['Reverse Lunges','5 / leg'],['Glute Bridges','10 reps'],['Backpack Rows','10 reps'],['Dead Bug','5 / side'],['Plank','20 sec']];
+const tasks=[['workout','Workout','Beginner full-body · ~25 min'],['walk','Walk','10–15 minutes easy walking'],['water','Water','Drink water throughout the day'],['food','Eat intentionally','Protein + balanced meals; no mindless snacking'],['sleep','Sleep','Protect 7–8 hours tonight']];
+const CONFIG=window.WINTER_ARC_CONFIG||{};
+const CLOUD_READY=CONFIG.SUPABASE_URL && CONFIG.SUPABASE_URL.startsWith('http') && CONFIG.SUPABASE_ANON_KEY && !CONFIG.SUPABASE_ANON_KEY.includes('YOUR_');
+const sb=CLOUD_READY?window.supabase.createClient(CONFIG.SUPABASE_URL,CONFIG.SUPABASE_ANON_KEY):null;
+const ARC_START=new Date('2026-10-01T00:00:00');
+const TOTAL_DAYS=92;
+const localKey='winterArc';
+const state=JSON.parse(localStorage.getItem(localKey)||'{}'); state.tasks=state.tasks||{}; state.journal=state.journal||''; state.days=state.days||{}; state.workouts=state.workouts||0;
+let cloudUser=null, authMode='signin', syncTimer=null;
+function saveLocal(){localStorage.setItem(localKey,JSON.stringify(state));render()}
+function dayNumber(){const now=new Date(); const d=Math.floor((new Date(now.getFullYear(),now.getMonth(),now.getDate())-new Date(2026,9,1))/86400000)+1; return Math.min(TOTAL_DAYS,Math.max(1,d))}
+function dateKey(n=dayNumber()){const d=new Date(2026,9,1);d.setDate(d.getDate()+n-1);return d.toISOString().slice(0,10)}
+function currentKey(){return dateKey(dayNumber())}
+function isDone(k){return !!state.tasks[currentKey()+':'+k]}
+function cloudDayPayload(){const n=dayNumber(); const date=dateKey(n); const habits={}; tasks.forEach(([k])=>habits[k]=!!state.tasks[date+':'+k]); return {user_id:cloudUser.id,day_number:n,date,completed:!!state.days[date],workout_completed:!!state.tasks[date+':workout'],habits,journal:state.journal||''}}
+async function syncCloud(){if(!sb||!cloudUser)return; try{await sb.from('arc_days').upsert(cloudDayPayload(),{onConflict:'user_id,day_number'}); toast('Synced to cloud')}catch(e){console.warn(e);toast('Saved locally — cloud sync failed')}}
+function queueSync(){clearTimeout(syncTimer);syncTimer=setTimeout(syncCloud,500)}
+async function loadCloud(){if(!sb||!cloudUser)return; try{const {data,error}=await sb.from('arc_days').select('*').eq('user_id',cloudUser.id);if(error)throw error;data.forEach(row=>{const date=row.date;state.days[date]=!!row.completed; if(row.habits)Object.entries(row.habits).forEach(([k,v])=>state.tasks[date+':'+k]=!!v); if(row.journal && row.day_number===dayNumber())state.journal=row.journal;}); saveLocal(); await migrateLocal();}catch(e){console.warn(e);toast('Cloud data could not be loaded')}}
+async function migrateLocal(){if(!sb||!cloudUser)return; const date=currentKey(); const hasLocal=Object.keys(state.tasks).some(k=>k.startsWith(date+':'))||state.journal||state.days[date]; if(!hasLocal)return; try{await sb.from('arc_days').upsert(cloudDayPayload(),{onConflict:'user_id,day_number'});toast('Progress synced')}catch(e){console.warn(e)}}
+function save(){saveLocal();queueSync()}
+function toggle(k){state.tasks[currentKey()+':'+k]=!isDone(k); if(k==='workout'&&isDone(k))state.workouts++; if(k==='workout'&&!isDone(k))state.workouts=Math.max(0,state.workouts-1); if(tasks.every(([x])=>isDone(x)))state.days[currentKey()]=true; else delete state.days[currentKey()]; save(); toast(isDone(k)?'Nice. Keep going.':'Unchecked. No pressure.')}
+function renderTasks(){const el=document.getElementById('tasks'); el.innerHTML=tasks.map(([k,t,s])=>`<div class="task ${isDone(k)?'done':''}"><div class="check">${isDone(k)?'✓':''}</div><div class="task-text"><strong>${t}</strong><span>${s}</span></div><button data-task="${k}">${isDone(k)?'Done':'Mark'}</button></div>`).join('');el.querySelectorAll('[data-task]').forEach(b=>b.onclick=()=>toggle(b.dataset.task));document.getElementById('taskCount').textContent=`${tasks.filter(x=>isDone(x[0])).length} / 5`}
+function renderWorkout(){document.getElementById('workoutList').innerHTML=workouts.map(x=>`<div class="exercise"><b>${x[0]}</b><span>${x[1]}</span></div>`).join('')}
+function renderWeek(){const names=['M','T','W','T','F','S','S'];const today=new Date();const day=today.getDay()||7;const monday=new Date(today);monday.setDate(today.getDate()-day+1);document.getElementById('week').innerHTML=names.map((n,i)=>{const d=new Date(monday);d.setDate(monday.getDate()+i);const key=d.toISOString().slice(0,10);const done=!!state.days[key];return `<div class="day"><span>${n}</span><div class="dot ${done?'done':''} ${i===day-1?'today':''}">${done?'✓':''}</div></div>`}).join('');document.getElementById('weekCount').textContent=`${[...Array(7)].filter((_,i)=>{const d=new Date(monday);d.setDate(monday.getDate()+i);return state.days[d.toISOString().slice(0,10)]}).length} / 7`}
+function renderProgress(){let complete=Object.values(state.days).filter(Boolean).length;let n=dayNumber();let pct=Math.max(1,Math.round((complete/TOTAL_DAYS)*100));document.getElementById('progressLabel').textContent=pct+'%';document.getElementById('ringText').textContent=pct+'%';document.getElementById('ring').style.setProperty('--p',pct+'%');document.getElementById('dayLabel').textContent=`Day ${n} / ${TOTAL_DAYS}`;document.getElementById('completedDays').textContent=complete;let streak=0;for(let i=n;i>=1;i--){if(state.days[dateKey(i)])streak++;else break}document.getElementById('streak').textContent=streak;document.getElementById('workouts').textContent=state.workouts;document.getElementById('sideProgress').textContent=`Day ${n} / ${TOTAL_DAYS}`;document.getElementById('sideBar').style.width=Math.min(100,Math.round((n/TOTAL_DAYS)*100))+'%';document.querySelector('.hero .eyebrow').textContent=new Intl.DateTimeFormat(undefined,{weekday:'long'}).format(new Date())+' · '+new Intl.DateTimeFormat(undefined,{month:'long',day:'numeric',year:'numeric'}).format(new Date());document.querySelector('.date').textContent=`WINTER ARC ${String(n).padStart(2,'0')} / ${TOTAL_DAYS}`;document.querySelector('#journal .card-head h3').textContent=`Day ${n} journal`}
+function renderCalendar(){let e=document.getElementById('calendar');let out='';const n=dayNumber();for(let d=1;d<=31;d++){let key=`2026-10-${String(d).padStart(2,'0')}`;let done=!!state.days[key];out+=`<div class="calday ${d===n?'today':''} ${done?'done':''}"><small>${d}</small>${done?'<div style="margin-top:20px">✓</div>':''}</div>`}e.innerHTML=out}
+function render(){renderTasks();renderWorkout();renderWeek();renderProgress();renderCalendar();document.getElementById('journalText').value=state.journal;document.getElementById('accountButton').textContent=cloudUser?(cloudUser.email?.split('@')[0]||'Account'):'Sign in'}
+function toast(msg){let t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),1600)}
+function openAuth(){document.getElementById('authPanel').classList.add('open');document.getElementById('authStatus').textContent=CLOUD_READY?'':'Add your Supabase keys in config.js first.'}
+function closeAuth(){document.getElementById('authPanel').classList.remove('open')}
+function setAuthMode(mode){authMode=mode;document.querySelectorAll('.auth-tab').forEach(b=>b.classList.toggle('active',b.dataset.auth===mode));document.getElementById('nameField').classList.toggle('hidden',mode!=='signup');document.getElementById('authSubmit').textContent=mode==='signup'?'Create account':'Sign in';document.getElementById('authPassword').autocomplete=mode==='signup'?'new-password':'current-password'}
+async function submitAuth(){const email=document.getElementById('authEmail').value.trim();const password=document.getElementById('authPassword').value;const name=document.getElementById('authName').value.trim();const status=document.getElementById('authStatus');if(!sb){status.textContent='Cloud is not configured yet.';return}status.textContent='Working…';let res;if(authMode==='signup')res=await sb.auth.signUp({email,password,options:{data:{full_name:name}}});else res=await sb.auth.signInWithPassword({email,password});if(res.error){status.textContent=res.error.message;return}if(authMode==='signup'&&!res.data.session){status.textContent='Account created. Check your email to verify it, then sign in.';return}status.textContent='Signed in.';closeAuth()}
+async function signOut(){if(sb)await sb.auth.signOut();cloudUser=null;document.getElementById('accountMenu').classList.remove('open');render();toast('Signed out')}
+if(sb){sb.auth.onAuthStateChange(async (_event,session)=>{cloudUser=session?.user||null;render();if(cloudUser){await loadCloud()}})}
+document.querySelectorAll('.nav button').forEach(b=>b.onclick=()=>{document.querySelectorAll('.nav button').forEach(x=>x.classList.remove('active'));b.classList.add('active');document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));document.getElementById(b.dataset.page).classList.add('active');window.scrollTo(0,0)});
+document.getElementById('saveJournal').onclick=()=>{state.journal=document.getElementById('journalText').value;save();toast(cloudUser?'Journal saved & syncing':'Journal saved')};document.getElementById('journalText').addEventListener('input',()=>{state.journal=document.getElementById('journalText').value;localStorage.setItem(localKey,JSON.stringify(state));queueSync()});
+document.getElementById('accountButton').onclick=()=>{if(cloudUser)document.getElementById('accountMenu').classList.toggle('open');else openAuth()};document.getElementById('authClose').onclick=closeAuth;document.getElementById('authSubmit').onclick=submitAuth;document.querySelectorAll('.auth-tab').forEach(b=>b.onclick=()=>setAuthMode(b.dataset.auth));document.getElementById('signOut').onclick=signOut;document.getElementById('accountEmail').textContent=cloudUser?.email||'';
+let idx=0,timer=null,seconds=0;const modal=document.getElementById('modal');function openWorkout(){idx=0;showExercise();modal.classList.add('open')}function showExercise(){let [name,rep]=workouts[idx];document.getElementById('modalTitle').textContent=name;document.getElementById('exerciseProgress').textContent=`${idx+1} / ${workouts.length} · ${rep}`;seconds=rep.includes('sec')?parseInt(rep):10;document.getElementById('timer').textContent=seconds;clearInterval(timer);timer=setInterval(()=>{seconds--;document.getElementById('timer').textContent=Math.max(0,seconds);if(seconds<=0)clearInterval(timer)},1000)}document.getElementById('startWorkout').onclick=openWorkout;document.getElementById('closeModal').onclick=()=>{clearInterval(timer);modal.classList.remove('open')};document.getElementById('skipRest').onclick=next;document.getElementById('nextExercise').onclick=next;function next(){if(idx<workouts.length-1){idx++;showExercise()}else{clearInterval(timer);modal.classList.remove('open');if(!isDone('workout'))toggle('workout');toast('Workout complete. Day is in the books.')}}
+render();
+if(sb){sb.auth.getSession().then(({data})=>{cloudUser=data.session?.user||null;render();if(cloudUser)loadCloud()})}
+</script>
+</body></html>
