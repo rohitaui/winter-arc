@@ -39,6 +39,19 @@ body{background:radial-gradient(1000px 600px at 70% -10%,#dff2fc 0%,transparent 
 .account-btn{border:1px solid var(--line);background:#fff;color:var(--text);border-radius:11px;padding:8px 10px;font-size:12px;font-weight:800}.brand{gap:8px}.auth{position:fixed;inset:0;background:rgba(28,45,56,.34);backdrop-filter:blur(10px);display:none;align-items:center;justify-content:center;padding:20px;z-index:30}.auth.open{display:flex}.auth-card{width:min(430px,100%);background:#fff;border:1px solid var(--line);border-radius:24px;padding:26px;box-shadow:0 24px 80px rgba(32,65,88,.18)}.auth-card h2{font-size:34px;letter-spacing:-.05em;margin:8px 0}.auth-card label{display:grid;gap:6px;font-size:12px;font-weight:800;margin-top:14px}.auth-card input{width:100%;border:1px solid var(--line);border-radius:12px;padding:12px;background:#f8fafb;color:var(--text);outline:none}.auth-card input:focus{border-color:var(--accent)}.auth-tabs{display:grid;grid-template-columns:1fr 1fr;background:#eef5f9;border-radius:12px;padding:3px;margin:20px 0 4px}.auth-tab{border:0;background:transparent;padding:9px;border-radius:9px;color:var(--muted);font-weight:800}.auth-tab.active{background:#fff;color:var(--text);box-shadow:0 2px 8px rgba(32,65,88,.08)}.auth-submit{width:100%;margin-top:18px}.auth-close{width:100%;margin-top:8px}.auth-status{font-size:12px;color:var(--muted);margin-top:12px;min-height:18px}.hidden{display:none!important}.account-menu{position:fixed;top:18px;right:20px;width:230px;background:#fff;border:1px solid var(--line);border-radius:16px;padding:14px;box-shadow:0 18px 50px rgba(32,65,88,.14);display:none;z-index:20}.account-menu.open{display:block}.account-menu strong,.account-menu span{display:block}.account-menu strong{font-size:13px;word-break:break-word}.account-menu span{font-size:11px;color:var(--muted);margin-top:2px}.account-menu button{margin-top:12px;border:0;background:#eef5f9;border-radius:10px;padding:9px 12px;font-weight:800;width:100%;color:var(--text)}@media(max-width:850px){.brand{align-items:center}.account-btn{margin-left:auto}}
 
 .profile-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}.profile-field{display:grid;gap:7px}.profile-field.full{grid-column:1/-1}.profile-field label{font-size:12px;font-weight:800}.profile-field input,.profile-field select{width:100%;border:1px solid var(--line);border-radius:12px;padding:12px;background:#f8fafb;color:var(--text);outline:none}.profile-field input:focus,.profile-field select:focus{border-color:var(--accent)}.height-fields{display:grid;grid-template-columns:1fr 1fr;gap:10px}.profile-actions{display:flex;gap:10px;align-items:center;margin-top:18px}.profile-status{font-size:12px;color:var(--muted);min-height:18px}.danger-button{border:1px solid #efc5c5;background:#fff5f5;color:#a43f3f;border-radius:13px;padding:11px 15px;font-weight:800}.profile-note{font-size:12px;color:var(--muted);margin-top:18px}@media(max-width:600px){.profile-grid{grid-template-columns:1fr}.profile-field.full{grid-column:auto}.height-fields{grid-template-columns:1fr 1fr}}
+
+/* Exercise references: keep the entire pose visible and controls reachable. */
+#modal .modal-card{max-height:calc(100dvh - 40px);overflow-y:auto}
+.exercise-reference{margin:16px 0 0}
+.exercise-image-wrap{aspect-ratio:3/2;display:grid;place-items:center;background:#f4f7f9;border:1px solid var(--line);border-radius:14px;overflow:hidden}
+.exercise-image{width:100%;height:auto;min-width:0;min-height:0;object-fit:contain;display:block}
+.exercise-image[hidden],.exercise-image-fallback[hidden]{display:none}
+.exercise-image-fallback{padding:20px;text-align:center;color:var(--muted);font-size:13px}
+.exercise-cue{margin:10px 0 0;text-align:center;font-size:13px;color:var(--muted)}
+#modal .timer{margin:12px 0;font-size:64px;line-height:1.1}
+#modal .modal-actions{position:sticky;bottom:-1px;background:#fff;padding:10px 0 0}
+@media(max-width:600px){#modal .modal-card{padding:20px}#modal .timer{font-size:54px}}
+@media(max-height:500px){#modal .modal-card{padding:14px 20px}.exercise-reference{margin-top:8px}.exercise-cue{margin-top:6px;font-size:12px}#modal .timer{font-size:32px;margin:6px 0}#modal .modal-actions{padding-top:4px}}
 </style>
 </head>
 <body>
@@ -129,12 +142,34 @@ body{background:radial-gradient(1000px 600px at 70% -10%,#dff2fc 0%,transparent 
   <div><strong id="accountEmail"></strong><span>Cloud synced</span></div>
   <button id="signOut">Sign out</button>
 </div>
-<div class="modal" id="modal"><div class="modal-card"><div class="modal-top"><div><div class="eyebrow">WORKOUT MODE</div><h3 id="modalTitle" style="font-size:25px;margin:5px 0">Bodyweight Squats</h3></div><button class="close" id="closeModal">×</button></div><div class="exercise-progress" id="exerciseProgress">1 / 7 · 10 reps</div><div class="timer" id="timer">10</div><div class="modal-actions"><button class="secondary" id="skipRest">Skip</button><button class="primary" id="nextExercise">Done</button></div></div></div>
+<div class="modal" id="modal"><div class="modal-card"><div class="modal-top"><div><div class="eyebrow">WORKOUT MODE</div><h3 id="modalTitle" style="font-size:25px;margin:5px 0">Bodyweight Squats</h3></div><button class="close" id="closeModal">×</button></div><div class="exercise-progress" id="exerciseProgress">1 / 7 · 10 reps</div><figure class="exercise-reference"><div class="exercise-image-wrap"><img class="exercise-image" id="exerciseImage" alt="" width="1536" height="1024" decoding="async"><span class="exercise-image-fallback" id="exerciseImageFallback" hidden>Image unavailable. Follow the form cue below.</span></div><figcaption class="exercise-cue" id="exerciseCue"></figcaption></figure><div class="timer" id="timer">10</div><div class="modal-actions"><button class="secondary" id="skipRest">Skip</button><button class="primary" id="nextExercise">Done</button></div></div></div>
 <div class="toast" id="toast">Saved</div>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script src="config.js"></script>
 <script>
 const workouts=[['Bodyweight Squats','10 reps'],['Incline Push-ups','8 reps'],['Reverse Lunges','5 / leg'],['Glute Bridges','10 reps'],['Backpack Rows','10 reps'],['Dead Bug','5 / side'],['Plank','20 sec']];
+
+// Each exercise owns its photo reference, accessible description and form cue.
+const exerciseReferences={
+ 'Bodyweight Squats':{file:'bodyweight-squats',alt:'Standing and lowered squat positions, with feet flat and hips back.',cue:'Keep your heels down and let your knees follow your toes.'},
+ 'Incline Push-ups':{file:'incline-push-ups',alt:'Start and lowered incline push-up positions with hands on a sturdy bench.',cue:'Use a stable surface and keep your body in a straight line.'},
+ 'Reverse Lunges':{file:'reverse-lunges',alt:'Standing position followed by a backward step into a lunge.',cue:'Step back gently, keep your chest tall, then switch legs.'},
+ 'Glute Bridges':{file:'glute-bridges',alt:'Lying with knees bent, then lifting the hips while shoulders stay on the mat.',cue:'Press through your feet and lift your hips without arching your back.'},
+ 'Backpack Rows':{file:'backpack-rows',alt:'Hip-hinge position with a backpack lowered, then pulled toward the ribs.',cue:'Keep your back neutral and pull your elbows behind you.'},
+ 'Dead Bug':{file:'dead-bug',alt:'Lying on the back in tabletop position, then extending an arm and leg.',cue:'Lower the opposite arm and leg slowly; keep your lower back against the mat.'},
+ 'Plank':{file:'plank',alt:'Forearm plank with elbows under shoulders and body held in a straight line.',cue:'Keep your hips level, look down, and breathe steadily.'}
+};
+function renderExerciseReference(name){
+ const reference=exerciseReferences[name];
+ const image=document.getElementById('exerciseImage');
+ const fallback=document.getElementById('exerciseImageFallback');
+ image.hidden=false;fallback.hidden=true;
+ image.onerror=()=>{image.hidden=true;fallback.hidden=false};
+ image.alt=reference.alt;
+ image.src=`assets/exercises/${reference.file}.png`;
+ document.getElementById('exerciseCue').textContent=reference.cue;
+}
+
 const tasks=[['workout','Workout','Beginner full-body · ~25 min'],['walk','Walk','10–15 minutes easy walking'],['water','Water','Drink water throughout the day'],['food','Eat intentionally','Protein + balanced meals; no mindless snacking'],['sleep','Sleep','Protect 7–8 hours tonight']];
 const CONFIG=window.WINTER_ARC_CONFIG||{};
 const CLOUD_READY=CONFIG.SUPABASE_URL && CONFIG.SUPABASE_URL.startsWith('http') && CONFIG.SUPABASE_ANON_KEY && !CONFIG.SUPABASE_ANON_KEY.includes('YOUR_');
@@ -176,7 +211,7 @@ if(sb){sb.auth.onAuthStateChange(async (_event,session)=>{cloudUser=session?.use
 document.querySelectorAll('.nav button').forEach(b=>b.onclick=()=>{if(b.dataset.page==='profile'&&!cloudUser){openAuth();return}document.querySelectorAll('.nav button').forEach(x=>x.classList.remove('active'));b.classList.add('active');document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));document.getElementById(b.dataset.page).classList.add('active');if(b.dataset.page==='profile')loadProfile();window.scrollTo(0,0)});
 document.getElementById('saveJournal').onclick=()=>{state.journal=document.getElementById('journalText').value;save();toast(cloudUser?'Journal saved & syncing':'Journal saved')};document.getElementById('journalText').addEventListener('input',()=>{state.journal=document.getElementById('journalText').value;localStorage.setItem(localKey,JSON.stringify(state));queueSync()});
 document.getElementById('accountButton').onclick=()=>{if(cloudUser){openProfile()}else openAuth()};document.getElementById('authClose').onclick=closeAuth;document.getElementById('authSubmit').onclick=submitAuth;document.querySelectorAll('.auth-tab').forEach(b=>b.onclick=()=>setAuthMode(b.dataset.auth));document.getElementById('signOut').onclick=signOut;document.getElementById('profileSignOut').onclick=signOut;document.getElementById('saveProfile').onclick=saveProfile;document.getElementById('accountEmail').textContent=cloudUser?.email||'';
-let idx=0,timer=null,seconds=0;const modal=document.getElementById('modal');function openWorkout(){idx=0;showExercise();modal.classList.add('open')}function showExercise(){let [name,rep]=workouts[idx];document.getElementById('modalTitle').textContent=name;document.getElementById('exerciseProgress').textContent=`${idx+1} / ${workouts.length} · ${rep}`;seconds=rep.includes('sec')?parseInt(rep):10;document.getElementById('timer').textContent=seconds;clearInterval(timer);timer=setInterval(()=>{seconds--;document.getElementById('timer').textContent=Math.max(0,seconds);if(seconds<=0)clearInterval(timer)},1000)}document.getElementById('startWorkout').onclick=openWorkout;document.getElementById('closeModal').onclick=()=>{clearInterval(timer);modal.classList.remove('open')};document.getElementById('skipRest').onclick=next;document.getElementById('nextExercise').onclick=next;function next(){if(idx<workouts.length-1){idx++;showExercise()}else{clearInterval(timer);modal.classList.remove('open');if(!isDone('workout'))toggle('workout');toast('Workout complete. Day is in the books.')}}
+let idx=0,timer=null,seconds=0;const modal=document.getElementById('modal');function openWorkout(){idx=0;showExercise();modal.classList.add('open')}function showExercise(){let [name,rep]=workouts[idx];document.getElementById('modalTitle').textContent=name;renderExerciseReference(name);document.getElementById('exerciseProgress').textContent=`${idx+1} / ${workouts.length} · ${rep}`;seconds=rep.includes('sec')?parseInt(rep):10;document.getElementById('timer').textContent=seconds;clearInterval(timer);timer=setInterval(()=>{seconds--;document.getElementById('timer').textContent=Math.max(0,seconds);if(seconds<=0)clearInterval(timer)},1000)}document.getElementById('startWorkout').onclick=openWorkout;document.getElementById('closeModal').onclick=()=>{clearInterval(timer);modal.classList.remove('open')};document.getElementById('skipRest').onclick=next;document.getElementById('nextExercise').onclick=next;function next(){if(idx<workouts.length-1){idx++;showExercise()}else{clearInterval(timer);modal.classList.remove('open');if(!isDone('workout'))toggle('workout');toast('Workout complete. Day is in the books.')}}
 render();
 sb.auth.getSession().then(async ({data})=>{cloudUser=data.session?.user||null;render();if(cloudUser)await loadProfile();else openAuth();});
 </script>
