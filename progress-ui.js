@@ -2,8 +2,15 @@ function escapeText(value){return String(value??'').replace(/[&<>"']/g,c=>({'&':
 function displayDate(date,options={month:'short',day:'numeric'}){return new Intl.DateTimeFormat('en',options).format(new Date(date+'T12:00:00'))}
 function dashboardRows(){return Object.values(state.rows||{})}
 function dashboardBar(percent,label){return `<div class="dashboard-bar" role="progressbar" aria-label="${escapeText(label)}" aria-valuenow="${percent}" aria-valuemin="0" aria-valuemax="100"><i style="width:${percent}%"></i></div>`}
+function todayCopy(day){
+ const phase=day<=31?{name:'Foundation',title:'Build the foundation.',guidance:'Keep the routine simple and repeatable.'}:day<=61?{name:'Build',title:'Build with consistency.',guidance:'Stay steady and focus on sustainable progress.'}:{name:'Transform',title:'Finish strong.',guidance:'Keep showing up and protect your recovery.'};
+ return {title:phase.title,guidance:day===1?'Day 1 is deliberately easy. Your only job today is to show up.':`Day ${day} of 92 · ${phase.name} phase. ${phase.guidance}`};
+}
 function renderProgress(){
  const n=dayNumber();
+ const copy=todayCopy(n);
+ document.getElementById('todayHeadline').textContent=copy.title;
+ document.getElementById('todayGuidance').textContent=copy.guidance;
  document.getElementById('sideProgress').textContent=`Day ${n} / 92`;
  document.getElementById('sideBar').style.width=Math.min(100,Math.round(n/92*100))+'%';
  document.querySelector('#today .hero .eyebrow').textContent=displayDate(ArcProgress.key(),{weekday:'long',month:'long',day:'numeric',year:'numeric'});
