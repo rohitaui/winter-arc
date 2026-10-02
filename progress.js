@@ -2,7 +2,7 @@
 (function(root){
  'use strict';
  const START='2026-10-01',END='2026-12-31',TOTAL=92;
- const habits=[['move','Move'],['workout','Workout'],['food','Eat intentionally'],['deepWork','Deep work'],['learn','Learn'],['sleep','Sleep']];
+ const habits=[['move','Move'],['workout','Workout / recovery'],['food','Eat intentionally'],['deepWork','Deep work'],['learn','Learn'],['sleep','Sleep']];
  function key(date=new Date()){return `${date.getFullYear()}-${String(date.getMonth()+1).padStart(2,'0')}-${String(date.getDate()).padStart(2,'0')}`}
  function ordinal(date){return Date.parse(date+'T12:00:00Z')/86400000}
  function shift(date,n){return new Date((ordinal(date)+n)*86400000).toISOString().slice(0,10)}
