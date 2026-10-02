@@ -46,12 +46,17 @@ function renderProgress(){
  root.querySelectorAll('[data-progress-date]').forEach(b=>b.onclick=()=>showDayDetails(b.dataset.progressDate));
 }
 function showDayDetails(date){
- if(!cloudUser||progressStatus!=='ready')return;
- const d=ArcProgress.build(dashboardRows()).day(date);if(!d.inArc||d.future)return;
+ if(date<ArcProgress.START||date>currentKey()||date>ArcProgress.END)return;
+ if(cloudUser&&progressStatus!=='ready'){toast(progressStatus==='loading'?'Your progress is still loading.':'Retry loading your progress before making more changes.');return}
+ const editable=date<currentKey();
+ const checked=tasks.filter(([id])=>state.tasks[`${date}:${id}`]===true).length;
+ const status=checked===tasks.length?'Complete':checked?`${checked} of ${tasks.length} checked in`:'No check-ins yet';
  const dialog=document.getElementById('dayDetails');
- document.getElementById('detailTitle').textContent=`Day ${d.number} · ${displayDate(date)}`;
- document.getElementById('detailStatus').textContent=d.status;
- document.getElementById('detailHabits').innerHTML=ArcProgress.habits.map(([id,name])=>{const label=id==='workout'?(ArcWorkoutPlan.forDate(date).mode==='strength'?'Strength session':'Recovery'):name;return `<li><b>${label}</b><span>${d.row?.habits[id]===true?'✓ Done':d.row?.habits[id]===false?'Not checked':'Not recorded'}</span></li>`}).join('')+(d.row?.habits.water!==undefined?`<li><b>Water (previous habit)</b><span>${d.row.habits.water?'✓ Done':'Not checked'}</span></li>`:'');
- document.getElementById('detailJournal').textContent=d.row?.journal||'No journal entry for this day.';
- dialog.showModal();
+ document.getElementById('detailTitle').textContent=`Day ${ArcProgress.dayNumber(date)} · ${displayDate(date,{weekday:'long',month:'long',day:'numeric'})}`;
+ document.getElementById('detailStatus').textContent=`${editable?'PAST DAY':'TODAY'} · ${status.toUpperCase()}`;
+ document.getElementById('detailHelp').textContent=editable?'Update this day’s check-ins. Changes save automatically.':'Today’s check-ins can be changed on the Today page.';
+ document.getElementById('detailHabits').innerHTML=tasks.map(([id,name])=>{const label=id==='workout'?(ArcWorkoutPlan.forDate(date).mode==='strength'?'Strength session':'Recovery'):name,done=state.tasks[`${date}:${id}`]===true,recorded=state.tasks[`${date}:${id}`]!==undefined;return `<li><div><b>${label}</b><span class="detail-state">${done?'Checked in':recorded?'Not checked':'Not recorded'}</span></div>${editable?`<button type="button" data-history-task="${id}" aria-pressed="${done}">${done?'Unmark':'Mark'}</button>`:''}</li>`}).join('')+(state.rows[date]?.habits?.water!==undefined?`<li><div><b>Water (previous habit)</b><span class="detail-state">${state.rows[date].habits.water?'Checked in':'Not checked'}</span></div></li>`:'');
+ document.getElementById('detailJournal').textContent=state.journals[date]||(date===currentKey()?state.journal:'')||state.rows[date]?.journal||'No journal entry for this day.';
+ document.querySelectorAll('#detailHabits [data-history-task]').forEach(button=>button.onclick=()=>togglePastDay(date,button.dataset.historyTask));
+ if(!dialog.open)dialog.showModal();
 }

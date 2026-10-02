@@ -20,10 +20,12 @@ function applyRows(rows){
  rows.forEach(raw=>{const row=ArcProgress.normalize(raw);if(!row)return;state.rows[row.date]=row;state.days[row.date]=!!row.completed;state.journals[row.date]=row.journal||'';Object.entries(row.habits).forEach(([k,v])=>state.tasks[row.date+':'+k]=v===true);if(row.workout_completed)state.workouts++});
  state.journal=state.journals[currentKey()]||'';
 }
-function cloudDayPayload(){
- const date=currentKey(),existing=state.rows[date];
- const habits={...(existing?.habits||{})};tasks.forEach(([k])=>habits[k]=isDone(k));
- return {user_id:cloudUser.id,day_number:ArcProgress.dayNumber(date),date,completed:!!state.days[date],workout_completed:isDone('workout'),habits,journal:state.journal||''};
+function cloudDayPayload(date=currentKey()){
+ const existing=state.rows[date];
+ const habits={...(existing?.habits||{})};
+ tasks.forEach(([k])=>{const value=state.tasks[`${date}:${k}`];if(date===currentKey()||value!==undefined)habits[k]=date===currentKey()?isDone(k):value===true});
+ const journal=date===currentKey()?state.journal||'':state.journals[date]??existing?.journal??'';
+ return {user_id:cloudUser?.id||null,day_number:ArcProgress.dayNumber(date),date,completed:tasks.every(([k])=>habits[k]===true),workout_completed:habits.workout===true,habits,journal};
 }
 function editableToday(){
  if(!cloudUser){if(currentKey()<ArcProgress.START||currentKey()>ArcProgress.END){toast('Check-ins are available October 1–December 31.');return false}return true}
@@ -33,10 +35,10 @@ function editableToday(){
  return true;
 }
 function saveLocal(){writeCache();render()}
-function queueSync(){
+function queueSync(date=currentKey()){
  if(!cloudUser){writeCache();document.getElementById('cloudNotice').textContent='Saved on this device. Sign in to sync across devices.';return}
- if(progressStatus!=='ready'||currentKey()<ArcProgress.START||currentKey()>ArcProgress.END)return;
- const payload=cloudDayPayload();state.rows[payload.date]=payload;state.journals[payload.date]=payload.journal;state.pending[payload.date]=payload;
+ if(progressStatus!=='ready'||date<ArcProgress.START||date>currentKey()||date>ArcProgress.END)return;
+ const payload=cloudDayPayload(date);state.rows[payload.date]=payload;state.journals[payload.date]=payload.journal;state.pending[payload.date]=payload;
  writeCache();document.getElementById('cloudNotice').textContent='Saving your changes…';
  clearTimeout(syncTimer);syncTimer=setTimeout(syncCloud,500);
 }
@@ -83,6 +85,16 @@ function toggle(k){
  state.tasks[currentKey()+':'+k]=!isDone(k);
  state.days[currentKey()]=tasks.every(([id])=>isDone(id));
  save();toast(isDone(k)?'Nice. Keep going.':'Unchecked. No pressure.');
+}
+function togglePastDay(date,k){
+ if(date>=currentKey()||date<ArcProgress.START||date>ArcProgress.END)return;
+ if(cloudUser&&progressStatus!=='ready'){toast(progressStatus==='loading'?'Your progress is still loading.':'Retry loading your progress before making more changes.');return}
+ const key=`${date}:${k}`;
+ state.tasks[key]=state.tasks[key]!==true;
+ state.days[date]=tasks.every(([id])=>state.tasks[`${date}:${id}`]===true);
+ const payload=cloudDayPayload(date);state.rows[date]=payload;state.journals[date]=payload.journal;
+ queueSync(date);render();showDayDetails(date);
+ toast(cloudUser?'Past check-in saved & syncing':'Past check-in saved on this device.');
 }
 function applySession(session){
  const user=session?.user||null;
