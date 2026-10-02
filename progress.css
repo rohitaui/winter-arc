@@ -1,0 +1,30 @@
+#progress{--progress-green:#277353}
+#progress .card{background:#fff;box-shadow:none;padding:24px}
+#progress h2{font-size:clamp(34px,5vw,52px);line-height:1.05;margin:10px 0;letter-spacing:-.05em}
+.progress-intro{margin-bottom:24px}.progress-intro p{margin:0;color:var(--muted);max-width:650px}
+.dashboard-grid{display:grid;grid-template-columns:1.15fr 1fr;gap:18px}
+.dashboard-wide{grid-column:1/-1}
+.dashboard-kicker{font-size:11px;text-transform:uppercase;letter-spacing:.12em;color:var(--muted);font-weight:750}
+.dashboard-head{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:20px}
+.dashboard-head h3{font-size:18px}.dashboard-head span{font-size:12px;color:var(--muted)}
+.dashboard-number{font-size:48px;font-weight:750;letter-spacing:-.05em;line-height:1.1;margin:12px 0}.dashboard-number small{font-size:17px;color:var(--muted);font-weight:500;letter-spacing:0}
+.dashboard-meta{display:flex;gap:24px;flex-wrap:wrap;margin-top:20px;font-size:13px;color:var(--muted)}.dashboard-meta b{display:block;color:var(--text);font-size:21px}
+.dashboard-bar{height:8px;background:#edf1f4;border-radius:99px;overflow:hidden}.dashboard-bar i{display:block;height:100%;background:var(--accent);border-radius:99px}
+.dashboard-note{font-size:12px;color:var(--muted);line-height:1.6;margin:14px 0 0}
+.streak-values{display:flex;gap:40px}.streak-values .dashboard-number{margin-bottom:5px}.streak-values span{font-size:12px;color:var(--muted)}
+.dashboard-week{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:8px}
+.dashboard-day{border:1px solid var(--line);border-radius:14px;background:#fff;color:var(--text);padding:14px 8px;text-align:left;min-width:0;min-height:152px}
+.dashboard-day:hover:not(:disabled){border-color:var(--accent);background:#f7fbfd}.dashboard-day:focus-visible,.activity-button:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.dashboard-day:disabled{cursor:default;background:#fafbfc;color:var(--muted)}.dashboard-day.is-today{outline:2px solid var(--accent);outline-offset:2px}.dashboard-day.is-complete{background:#f0f8f3;border-color:#bfdcc9}
+.dashboard-day .weekday{font-size:11px;color:var(--muted);display:block}.dashboard-day strong{font-size:23px;display:block;margin:4px 0 10px}.dashboard-day small{font-size:10px;display:block;margin-top:7px;line-height:1.4}
+.day-status{font-size:10px;font-weight:750;display:block;line-height:1.4}.is-complete .day-status{color:var(--progress-green)}
+.week-summary{display:flex;gap:18px;flex-wrap:wrap;font-size:12px;color:var(--muted);margin:0 0 18px}.week-summary b{color:var(--text)}
+.habit-row+.habit-row{margin-top:19px}.habit-label{display:flex;justify-content:space-between;gap:12px;margin-bottom:8px;font-size:13px}.habit-label span{color:var(--muted);font-size:12px}
+.phase-row+.phase-row{border-top:1px solid var(--line);padding-top:20px;margin-top:20px}.phase-heading{display:flex;justify-content:space-between;gap:8px;margin-bottom:5px;font-size:14px}.phase-row p{margin:0 0 12px;font-size:12px;color:var(--muted)}
+.activity-button{display:flex;width:100%;align-items:center;justify-content:space-between;gap:14px;padding:15px 0;text-align:left;background:none;border:0;color:var(--text)}.activity-button+.activity-button{border-top:1px solid var(--line)}.activity-button strong{font-size:13px}.activity-button small{display:block;color:var(--muted);font-size:12px;margin-top:4px}.activity-status{font-size:11px;padding:6px 10px;border-radius:99px;background:#f0f3f5;white-space:nowrap}.activity-status.complete{color:var(--progress-green);background:#eaf6ee}
+.progress-message{border:1px solid var(--line);border-radius:18px;padding:24px;background:#fff;min-height:170px}.progress-message p{color:var(--muted)}
+.dashboard-skeleton{display:grid;grid-template-columns:1fr 1fr;gap:18px}.skeleton-card{height:240px;border:1px solid var(--line);border-radius:22px;background:#fff;padding:24px}.skeleton-line{height:16px;background:#edf1f4;border-radius:7px;margin-bottom:24px}.skeleton-line:nth-child(2){height:54px;width:65%}.skeleton-card:nth-child(3){grid-column:1/-1;height:260px}
+#dayDetails{width:min(520px,calc(100% - 32px));max-height:calc(100dvh - 40px);border:1px solid var(--line);border-radius:22px;padding:26px;color:var(--text);background:#fff;overflow:auto}#dayDetails::backdrop{background:rgba(28,45,56,.4);backdrop-filter:blur(5px)}.detail-heading{display:flex;justify-content:space-between;align-items:start;gap:10px}.detail-heading h3{margin:5px 0 18px}.detail-list{list-style:none;padding:0;margin:15px 0}.detail-list li{display:flex;justify-content:space-between;border-bottom:1px solid var(--line);padding:12px 0;font-size:13px}.detail-list span{color:var(--muted)}.detail-journal{white-space:pre-wrap;overflow-wrap:anywhere;line-height:1.6;background:#f5f8fb;border-radius:12px;padding:14px;font-size:13px}
+#cloudNotice{font-size:12px;color:#775b29;margin:12px 0}#cloudNotice:empty{display:none}
+@media(max-width:850px){.dashboard-grid{grid-template-columns:1fr}.dashboard-wide{grid-column:auto}#progress .card{padding:20px}.dashboard-week{gap:5px}.dashboard-day{padding:12px 4px}.dashboard-day small{font-size:9px}.dashboard-day .day-status{font-size:9px}.dashboard-day strong{font-size:19px}.dashboard-skeleton{grid-template-columns:1fr}.skeleton-card:nth-child(3){grid-column:auto}}
+@media(max-width:380px){#progress .card{padding:15px}.dashboard-week{gap:3px}.dashboard-day{padding:10px 2px}.dashboard-day small{font-size:8px}.dashboard-day .day-status{font-size:8px}.dashboard-day .weekday{font-size:10px}}
