@@ -15,7 +15,7 @@ function renderProgress(){
  document.getElementById('sideBar').style.width=Math.min(100,Math.round(n/92*100))+'%';
  document.querySelector('#today .hero .eyebrow').textContent=displayDate(ArcProgress.key(),{weekday:'long',month:'long',day:'numeric',year:'numeric'});
  document.querySelector('.date').textContent=`WINTER ARC ${String(n).padStart(2,'0')} / 92`;
- document.querySelector('#journal .card-head h3').textContent=`Day ${n} journal`;
+ document.getElementById('journalTitle').textContent=`Day ${n} journal`;
  const root=document.getElementById('progressContent');
  if(!cloudUser){root.innerHTML='<div class="progress-message"><h3>Your progress, in one place.</h3><p>Sign in to see your saved Winter Arc.</p><button class="primary" id="progressSignIn">Sign in</button></div>';document.getElementById('progressSignIn').onclick=openAuth;return}
  if(progressStatus==='loading'){
@@ -54,9 +54,14 @@ function showDayDetails(date){
  const dialog=document.getElementById('dayDetails');
  document.getElementById('detailTitle').textContent=`Day ${ArcProgress.dayNumber(date)} · ${displayDate(date,{weekday:'long',month:'long',day:'numeric'})}`;
  document.getElementById('detailStatus').textContent=`${editable?'PAST DAY':'TODAY'} · ${status.toUpperCase()}`;
- document.getElementById('detailHelp').textContent=editable?'Update this day’s check-ins. Changes save automatically.':'Today’s check-ins can be changed on the Today page.';
+ document.getElementById('detailHelp').textContent=editable?'Update this day’s check-ins and journal. Changes save automatically.':'Today’s check-ins and journal can be changed on the Today page.';
  document.getElementById('detailHabits').innerHTML=tasks.map(([id,name])=>{const label=id==='workout'?(ArcWorkoutPlan.forDate(date).mode==='strength'?'Strength session':'Recovery'):name,done=state.tasks[`${date}:${id}`]===true,recorded=state.tasks[`${date}:${id}`]!==undefined;return `<li><div><b>${label}</b><span class="detail-state">${done?'Checked in':recorded?'Not checked':'Not recorded'}</span></div>${editable?`<button type="button" data-history-task="${id}" aria-pressed="${done}">${done?'Unmark':'Mark'}</button>`:''}</li>`}).join('')+(state.rows[date]?.habits?.water!==undefined?`<li><div><b>Water (previous habit)</b><span class="detail-state">${state.rows[date].habits.water?'Checked in':'Not checked'}</span></div></li>`:'');
- document.getElementById('detailJournal').textContent=state.journals[date]||(date===currentKey()?state.journal:'')||state.rows[date]?.journal||'No journal entry for this day.';
+ const journal=state.journals[date]??(date===currentKey()?state.journal:'')??state.rows[date]?.journal??'';
+ const journalText=journal||'No journal entry for this day.';
+ const journalDisplay=document.getElementById('detailJournal'),journalEditor=document.getElementById('detailJournalEditor'),journalStatus=document.getElementById('detailJournalStatus');
+ journalDisplay.textContent=editable?'':journalText;journalDisplay.hidden=editable;
+ journalEditor.hidden=!editable;journalEditor.value=journal;journalEditor.dataset.date=date;
+ journalStatus.hidden=!editable;journalStatus.textContent=editable?'Changes save automatically.':'';
  document.querySelectorAll('#detailHabits [data-history-task]').forEach(button=>button.onclick=()=>togglePastDay(date,button.dataset.historyTask));
  if(!dialog.open)dialog.showModal();
 }

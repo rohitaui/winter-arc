@@ -55,9 +55,15 @@ async function syncCloud(){
    try{
     const {error}=await sb.from('arc_days').upsert(payload,{onConflict:'user_id,day_number'});if(error)throw error;
     if(cloudUser?.id!==id||generation!==accountGeneration)return;
-    if(state.pending[date]===payload)delete state.pending[date];writeCache();
+    if(state.pending[date]===payload){
+     delete state.pending[date];
+     if(date===currentKey())document.getElementById('journalSaveStatus').textContent='Saved to your account';
+     const journalEditor=document.getElementById('detailJournalEditor');
+     if(journalEditor.dataset.date===date)document.getElementById('detailJournalStatus').textContent='Saved to your account';
+    }
+    writeCache();
    }catch(error){
-    if(cloudUser?.id===id&&generation===accountGeneration){progressStatus='error';document.getElementById('cloudNotice').textContent='Sync failed. Your changes are saved on this device. Retry from Progress.';renderProgress()}
+    if(cloudUser?.id===id&&generation===accountGeneration){progressStatus='error';document.getElementById('cloudNotice').textContent='Sync failed. Your changes are saved on this device. Retry from Progress.';if(date===currentKey())document.getElementById('journalSaveStatus').textContent='Sync failed · saved on this device';const journalEditor=document.getElementById('detailJournalEditor');if(journalEditor.dataset.date===date)document.getElementById('detailJournalStatus').textContent='Sync failed · saved on this device';renderProgress()}
     return;
    }
   }
@@ -95,6 +101,21 @@ function togglePastDay(date,k){
  const payload=cloudDayPayload(date);state.rows[date]=payload;state.journals[date]=payload.journal;
  queueSync(date);render();showDayDetails(date);
  toast(cloudUser?'Past check-in saved & syncing':'Past check-in saved on this device.');
+}
+function saveJournalEntry(date,value){
+ if(date<ArcProgress.START||date>currentKey()||date>ArcProgress.END)return false;
+ if(date===currentKey()){
+  if(!editableToday())return false;
+  state.journal=value;
+ }else if(cloudUser&&progressStatus!=='ready'){
+  toast(progressStatus==='loading'?'Your progress is still loading.':'Retry loading your progress before making more changes.');
+  return false;
+ }
+ state.journals[date]=value;
+ const payload=cloudDayPayload(date);
+ state.rows[date]=payload;
+ queueSync(date);
+ return true;
 }
 function applySession(session){
  const user=session?.user||null;
