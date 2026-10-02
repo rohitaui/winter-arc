@@ -97,5 +97,5 @@ function applySession(session){
  progressStatus=user?'loading':'signedOut';
  document.getElementById('dayDetails').close();document.getElementById('cloudNotice').textContent='';
  render();
- if(user){loadCloud();loadProfile()}else openAuth();
+ if(user){closeAuth();loadCloud();loadProfile()}else openAuth();
 }

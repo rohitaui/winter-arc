@@ -4,6 +4,7 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
 <title>Winter Arc — 92</title>
+<link rel="stylesheet" href="progress.css">
 <style>
 :root{--bg:#090b0f;--panel:#11151b;--panel2:#171c23;--line:#262d37;--text:#f4f6f8;--muted:#8e98a5;--accent:#b9e7ff;--accent2:#7bd0ff;--success:#a9e6bd;--danger:#ff8f8f;--radius:22px;--shadow:0 20px 60px rgba(0,0,0,.28)}
 *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:radial-gradient(1000px 600px at 70% -10%,#173244 0%,transparent 55%),var(--bg);color:var(--text);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;line-height:1.45}button,input,textarea{font:inherit}button{cursor:pointer}.app{min-height:100vh;display:grid;grid-template-columns:240px 1fr}.sidebar{position:sticky;top:0;height:100vh;border-right:1px solid var(--line);padding:28px 18px;display:flex;flex-direction:column;background:rgba(9,11,15,.78);backdrop-filter:blur(18px)}.brand{padding:8px 10px 30px}.brand small{color:var(--accent);letter-spacing:.16em;font-size:10px;font-weight:800}.brand h1{font-size:28px;letter-spacing:-.06em;margin:7px 0 0}.nav{display:grid;gap:7px}.nav button{border:0;background:transparent;color:var(--muted);padding:12px 13px;border-radius:12px;text-align:left}.nav button.active,.nav button:hover{background:var(--panel2);color:var(--text)}.arc-meta{margin-top:auto;padding:16px;border:1px solid var(--line);border-radius:16px;background:var(--panel)}.arc-meta .label{font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.12em}.arc-meta strong{display:block;font-size:20px;margin:4px 0 10px}.bar{height:5px;background:#222a33;border-radius:99px;overflow:hidden}.bar i{display:block;height:100%;background:var(--accent);width:0;border-radius:inherit}.main{max-width:1180px;width:100%;margin:auto;padding:36px 42px 60px}.top{display:flex;justify-content:space-between;gap:20px;align-items:flex-end;margin-bottom:30px}.eyebrow{color:var(--accent);font-size:11px;letter-spacing:.18em;text-transform:uppercase;font-weight:800}.hero h2{font-size:clamp(36px,5vw,68px);line-height:.98;letter-spacing:-.065em;margin:8px 0 10px;max-width:800px}.hero p{color:var(--muted);margin:0;max-width:680px}.date{color:var(--muted);font-size:13px;text-align:right}.grid{display:grid;grid-template-columns:1.35fr .65fr;gap:18px}.card{background:linear-gradient(145deg,rgba(23,28,35,.96),rgba(15,18,24,.96));border:1px solid var(--line);border-radius:var(--radius);padding:22px;box-shadow:var(--shadow)}.card h3{margin:0;font-size:19px;letter-spacing:-.025em}.card-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:17px}.muted{color:var(--muted)}.today-card{grid-row:span 2}.mission{display:flex;justify-content:space-between;align-items:end;padding-bottom:18px;border-bottom:1px solid var(--line);margin-bottom:15px}.mission .big{font-size:42px;letter-spacing:-.06em;font-weight:800}.pill{font-size:11px;color:var(--accent);border:1px solid #36566a;padding:6px 9px;border-radius:999px;background:#10202a}.tasks{display:grid;gap:9px}.task{display:flex;align-items:center;gap:12px;padding:12px;border:1px solid transparent;border-radius:13px;background:#0d1116}.task.done{border-color:#294c39;background:#101a15}.check{width:22px;height:22px;border:1px solid #4b5663;border-radius:7px;display:grid;place-items:center;flex:none}.task.done .check{background:var(--success);border-color:var(--success);color:#09110c}.task-text{flex:1}.task-text strong{display:block;font-size:14px}.task-text span{font-size:12px;color:var(--muted)}.task button{border:0;background:transparent;color:var(--muted);font-size:12px}.workout-list{display:grid;gap:8px}.exercise{display:flex;align-items:center;justify-content:space-between;padding:11px 12px;background:#0d1116;border-radius:12px}.exercise b{font-size:13px}.exercise span{color:var(--accent);font-size:12px}.primary{border:0;border-radius:13px;background:var(--text);color:#0a0d11;padding:12px 16px;font-weight:800}.secondary{border:1px solid var(--line);border-radius:13px;background:transparent;color:var(--text);padding:11px 15px}.actions{display:flex;gap:8px;margin-top:14px}.stat-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}.stat{background:#0d1116;border:1px solid #1e252d;border-radius:14px;padding:15px}.stat strong{display:block;font-size:27px;letter-spacing:-.05em}.stat span{font-size:11px;color:var(--muted)}.week{display:grid;grid-template-columns:repeat(7,1fr);gap:7px}.day{min-width:0;text-align:center}.day span{font-size:10px;color:var(--muted);display:block;margin-bottom:6px}.dot{aspect-ratio:1;border-radius:50%;background:#1c232c;border:1px solid #2a323d;display:grid;place-items:center;font-size:11px;color:var(--muted)}.dot.done{background:var(--success);color:#0b130e;border-color:var(--success)}.dot.today{outline:2px solid var(--accent);outline-offset:2px}.progress-wrap{display:flex;align-items:center;gap:15px}.ring{width:88px;height:88px;border-radius:50%;background:conic-gradient(var(--accent) var(--p,0%),#232a33 0);display:grid;place-items:center;position:relative}.ring:after{content:"";position:absolute;inset:8px;background:var(--panel);border-radius:50%}.ring strong{position:relative;z-index:1}.page{display:none}.page.active{display:block}.plan-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.phase{padding:20px;border:1px solid var(--line);border-radius:18px;background:var(--panel)}.phase .num{font-size:11px;color:var(--accent);font-weight:800;letter-spacing:.12em}.phase h3{margin:8px 0 5px;font-size:22px}.phase p{font-size:13px;color:var(--muted)}.calendar{display:grid;grid-template-columns:repeat(7,1fr);gap:6px}.calday{min-height:75px;border:1px solid var(--line);border-radius:10px;padding:7px;background:#0d1116}.calday small{color:var(--muted)}.calday.done{border-color:#2e5941}.calday.today{outline:1px solid var(--accent)}.journal textarea{width:100%;min-height:180px;resize:vertical;background:#0b0f14;color:var(--text);border:1px solid var(--line);border-radius:14px;padding:15px;outline:none}.journal textarea:focus{border-color:#4c6879}.modal{position:fixed;inset:0;background:rgba(0,0,0,.7);backdrop-filter:blur(10px);display:none;align-items:center;justify-content:center;padding:20px;z-index:10}.modal.open{display:flex}.modal-card{width:min(560px,100%);background:#11161d;border:1px solid var(--line);border-radius:24px;padding:25px}.modal-top{display:flex;justify-content:space-between;align-items:start}.close{border:0;background:transparent;color:var(--muted);font-size:22px}.timer{font-size:82px;letter-spacing:-.08em;text-align:center;margin:30px 0 20px}.exercise-progress{font-size:12px;color:var(--muted);text-align:center}.modal-actions{display:flex;justify-content:center;gap:10px}.toast{position:fixed;right:20px;bottom:20px;background:#f4f6f8;color:#0a0d11;padding:12px 15px;border-radius:12px;font-size:13px;font-weight:700;transform:translateY(120px);transition:.25s;z-index:20}.toast.show{transform:translateY(0)}@media(max-width:850px){.app{display:block}.sidebar{position:sticky;height:auto;z-index:5;top:0;padding:12px 14px;border-right:0;border-bottom:1px solid var(--line);display:block}.brand{display:flex;align-items:center;justify-content:space-between;padding:3px 4px 10px}.brand h1{font-size:22px}.nav{display:flex;overflow:auto}.nav button{white-space:nowrap;padding:8px 10px}.arc-meta{display:none}.main{padding:24px 16px 50px}.top{display:block}.date{text-align:left;margin-top:10px}.grid{grid-template-columns:1fr}.today-card{grid-row:auto}.plan-grid{grid-template-columns:1fr}.calendar{grid-template-columns:repeat(4,1fr)}}
@@ -52,21 +53,227 @@ body{background:radial-gradient(1000px 600px at 70% -10%,#dff2fc 0%,transparent 
 #modal .modal-actions{position:sticky;bottom:-1px;background:#fff;padding:10px 0 0}
 @media(max-width:600px){#modal .modal-card{padding:20px}#modal .timer{font-size:54px}}
 @media(max-height:500px){#modal .modal-card{padding:14px 20px}.exercise-reference{margin-top:8px}.exercise-cue{margin-top:6px;font-size:12px}#modal .timer{font-size:32px;margin:6px 0}#modal .modal-actions{padding-top:4px}}
+
+/* Today-page design preview inspired by the attached Perk style reference. */
+:root{--bg:#fff;--panel:#f5f5eb;--panel2:#f5f5eb;--line:#d2d2c8;--text:#14140f;--muted:#6e6e64;--accent:#beff50;--accent2:#beff50;--success:#beff50;--danger:#6e6e64;--radius:28px;--shadow:none}
+body{background:#fff;color:var(--text);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+.app{display:block;min-height:100vh}
+.sidebar{position:sticky;top:0;z-index:15;width:100%;height:auto;display:grid;grid-template-columns:auto minmax(0,1fr) auto;align-items:center;gap:26px;padding:12px max(24px,calc((100vw - 1200px)/2));border:0;border-bottom:1px solid var(--line);background:rgba(255,255,255,.96);backdrop-filter:blur(12px)}
+.brand{display:flex;align-items:center;gap:18px;padding:0}.brand-logo{display:block;width:150px;height:auto;flex:none}.brand small{color:var(--muted);font-size:10px;font-weight:500;letter-spacing:.1em}.brand h1{margin:2px 0 0;color:var(--text);font-size:22px;font-weight:500;letter-spacing:-.03em}
+.nav{display:flex;justify-content:center;gap:6px}.nav button{padding:10px 14px;border-radius:9999px;color:var(--muted);font-size:14px;font-weight:400}.nav button.active,.nav button:hover{background:var(--panel2);color:var(--text)}
+.account-area{position:relative;justify-self:end;z-index:20}.account-btn{max-width:220px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;border:0;border-radius:28px;background:var(--accent);color:var(--text);padding:13px 18px;font-size:14px;font-weight:500}
+.arc-meta{display:flex;align-items:center;gap:10px;margin:0;padding:0;border:0;background:transparent}.arc-meta .label{font-size:10px;letter-spacing:.1em;color:var(--muted)}.arc-meta strong{margin:0;font-size:13px;font-weight:500}.arc-meta .bar{display:none}
+.main{max-width:1200px;padding:38px 32px 72px}
+#today .top{align-items:center;min-height:236px;margin-bottom:28px;padding:36px 44px;border-radius:28px;background:var(--accent)}
+#today .eyebrow{color:var(--text);font-size:10px;font-weight:500;letter-spacing:.1em}
+#today .hero h2{max-width:850px;margin:12px 0 14px;color:var(--text);font-size:clamp(48px,7.3vw,82px);font-weight:500;line-height:.92;letter-spacing:-.03em}
+#today .hero p{max-width:620px;color:#30302a;font-size:16px;line-height:1.5}
+#today .date{flex:none;padding:10px 14px;border:1px solid rgba(20,20,15,.35);border-radius:9999px;color:var(--text);font-size:11px;font-weight:500;letter-spacing:.06em}
+#today .grid{grid-template-columns:minmax(0,1.1fr) minmax(340px,.9fr);gap:20px}
+#today .card{padding:30px;background:var(--panel);border:0;border-radius:28px;box-shadow:none}
+#today .card h3{font-size:22px;font-weight:500;letter-spacing:-.03em}
+#today .card-head{margin-bottom:20px}
+#today .card-head>.muted{font-size:12px}
+#today .mission{align-items:center;padding-bottom:0;margin-bottom:10px;border:0}
+#today .mission .muted{color:var(--muted)!important;font-size:10px!important;letter-spacing:.1em}
+#today .mission .big{font-size:60px;font-weight:500;line-height:1;letter-spacing:-.03em}
+#today .today-progress{height:8px;margin:0 0 18px;overflow:hidden;border-radius:9999px;background:#d2d2c8}
+#today .today-progress i{display:block;width:0;height:100%;border-radius:inherit;background:var(--accent);transition:width .2s ease}
+#today .pill{border:0;border-radius:9999px;background:#fff;color:var(--text);padding:8px 12px;font-size:10px;font-weight:500;letter-spacing:.08em}
+#today .tasks{gap:10px}
+#today .task{gap:14px;padding:14px 16px;border:0;border-radius:18px;background:#fff}
+#today .task.done{background:#fff;border:1px solid #aacd70}
+#today .task .check{width:24px;height:24px;border:1px solid #919183;border-radius:8px;background:#fff;color:var(--text)}
+#today .task.done .check{background:var(--accent);border-color:var(--accent);color:var(--text)}
+#today .task-text strong{color:var(--text);font-size:15px;font-weight:500}
+#today .task-text span{color:var(--muted);font-size:13px;line-height:1.4}
+#today .task button[data-task]{padding:5px 0;color:var(--text);font-size:13px;font-weight:500;text-decoration:underline;text-decoration-color:#919183;text-underline-offset:4px}
+#today .workout-list{gap:8px}
+#today .exercise{gap:12px;padding:12px 14px;border-radius:18px;background:#fff}
+#today .exercise b{color:var(--text);font-size:14px;font-weight:500}
+#today .exercise span{color:var(--muted);font-size:13px}
+#today #workoutNote{color:var(--muted);font-size:13px!important;line-height:1.5}
+#today .primary{border:0;border-radius:28px;background:var(--accent);color:var(--text);padding:15px 20px;font-size:15px;font-weight:500}
+#today .secondary{border-radius:28px;border-color:var(--line);background:#fff;color:var(--text);font-weight:500}
+#today .actions{margin-top:18px}
+#today .week{gap:10px}
+#today .day span{color:var(--muted);font-size:11px;font-weight:400}
+#today .dot{border:1px solid var(--line);background:#fff;color:var(--text);font-size:12px}
+#today .dot.done{border-color:var(--accent);background:var(--accent);color:var(--text)}
+#today .dot.today{outline:2px solid var(--text);outline-offset:3px}
+#today #habitGuidance{color:var(--muted)!important;font-size:15px!important;line-height:1.55!important}
+#today button:focus-visible{outline:2px solid var(--text);outline-offset:3px}
+@media(max-width:900px){.sidebar{grid-template-columns:auto minmax(0,1fr) auto;gap:12px;padding:10px 20px}.brand{gap:10px}.nav{justify-content:flex-end;overflow-x:auto}.nav button{padding:9px 11px}.main{padding:28px 20px 56px}#today .grid{grid-template-columns:minmax(0,1.05fr) minmax(290px,.95fr);gap:14px}#today .card{padding:24px}}
+@media(max-width:680px){.sidebar{grid-template-columns:minmax(0,1fr) auto;gap:8px;padding:10px 16px}.brand{grid-column:1;grid-row:1;gap:10px}.brand-logo{width:128px}.brand small{display:none}.brand h1{font-size:20px}.arc-meta{gap:0}.arc-meta .label{display:none}.arc-meta strong{font-size:10px;white-space:nowrap}.account-area{grid-column:2;grid-row:1}.account-btn{padding:10px 15px;font-size:13px}.nav{grid-column:1/-1;grid-row:2;justify-content:flex-start;margin:0 -4px}.nav button{font-size:13px;padding:8px 11px}.main{padding:20px 14px 40px}#today .top{display:block;min-height:0;margin-bottom:16px;padding:28px 24px;border-radius:24px}#today .hero h2{font-size:clamp(46px,12vw,66px);margin:12px 0}#today .hero p{font-size:15px}#today .date{display:inline-flex;margin-top:18px}#today .grid{grid-template-columns:1fr;gap:14px}#today .today-card{grid-row:auto}#today .card{padding:20px;border-radius:24px}#today .mission .big{font-size:52px}#today .tasks{gap:8px}#today .task{padding:13px 12px;gap:11px}#today .task-text span{font-size:12px}}
+
+/* Shared visual system across Progress, Plan, Journal, Profile, and overlays. */
+.card{background:var(--panel);border:0;border-radius:28px;padding:30px;box-shadow:none}
+.primary{border:0;border-radius:28px;background:var(--accent);color:var(--text);padding:15px 20px;font-weight:500}
+.primary:hover,.account-btn:hover{filter:brightness(.96)}
+.secondary{border:1px solid var(--line);border-radius:28px;background:transparent;color:var(--text);padding:12px 17px;font-weight:500}
+.eyebrow{color:var(--muted);font-size:10px;font-weight:500;letter-spacing:.1em}
+.page:not(#today)>.top{align-items:center;min-height:205px;margin-bottom:24px;padding:36px 44px;border-radius:28px;background:var(--accent)}
+.page:not(#today)>.top .hero h2,#progress .progress-intro h2{margin:10px 0 12px;color:var(--text);font-size:clamp(42px,6.5vw,68px);font-weight:500;line-height:.94;letter-spacing:-.03em}
+.page:not(#today)>.top .hero p,#progress .progress-intro p{max-width:680px;color:#30302a;font-size:16px;line-height:1.5}
+#progress .progress-intro{margin:0 0 24px;padding:36px 44px;border-radius:28px;background:var(--accent)}
+#progress .progress-intro .eyebrow{color:var(--text)}
+#progress .progress-intro h2{margin:10px 0 12px}
+#progress .progress-intro p{margin:0}
+#progress .card{padding:30px;background:var(--panel);border:0;border-radius:28px;box-shadow:none}
+#progress .dashboard-head{align-items:start;margin-bottom:18px}
+#progress .dashboard-head h3{font-size:22px;font-weight:500;letter-spacing:-.03em}
+#progress .dashboard-head span,#progress .dashboard-note,#progress .streak-values span{color:var(--muted)}
+#progress .dashboard-number{font-weight:500;letter-spacing:-.03em}
+#progress .dashboard-number small{color:var(--muted);font-weight:400}
+#progress .dashboard-bar{height:9px;background:#fff;border-radius:9999px}
+#progress .dashboard-bar i{background:var(--accent)}
+#progress .dashboard-meta b{color:var(--text);font-weight:500}
+#progress .dashboard-day{min-height:144px;padding:13px 9px;border:1px solid var(--line);border-radius:18px;background:#fff;color:var(--text);transition:background .15s ease,border-color .15s ease}
+#progress .dashboard-day:hover:not(:disabled){border-color:#919183;background:#fff}
+#progress .dashboard-day:disabled{background:#eeeee6;color:#919183}
+#progress .dashboard-day.is-today{outline:2px solid var(--text);outline-offset:2px}
+#progress .dashboard-day.is-complete{background:#eff7dc;border-color:#aacd70}
+#progress .dashboard-day .weekday,#progress .dashboard-day small{color:var(--muted)}
+#progress .dashboard-day strong{font-weight:500}
+#progress .dashboard-day .day-status{font-weight:500}
+#progress .week-summary{color:var(--muted)}
+#progress .week-summary b{color:var(--text);font-weight:500}
+#progress .habit-label b,#progress .phase-heading b{font-weight:500}
+#progress .habit-label span{color:var(--muted)}
+#progress .phase-row+.phase-row{border-color:var(--line)}
+#progress .activity-button{color:var(--text)}
+#progress .activity-button+.activity-button{border-color:var(--line)}
+#progress .activity-button:hover{background:rgba(255,255,255,.55)}
+#progress .activity-button strong{font-weight:500}
+#progress .activity-status{background:#fff;color:var(--muted)}
+#progress .activity-status.complete{background:#eaf4d2;color:var(--text)}
+#progress .progress-message{border:0;border-radius:28px;background:var(--panel);padding:32px}
+#progress .progress-message p{color:var(--muted)}
+#progress .skeleton-card{border:0;border-radius:28px;background:var(--panel)}
+#progress .skeleton-line{background:#fff}
+#plan .plan-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+#plan .phase{min-height:250px;padding:28px;border:0;border-radius:28px;background:var(--panel)}
+#plan .phase .num{color:var(--muted);font-size:10px;font-weight:500;letter-spacing:.1em}
+#plan .phase h3{margin:24px 0 10px;color:var(--text);font-size:28px;font-weight:500;letter-spacing:-.03em}
+#plan .phase p{color:var(--muted);font-size:14px;line-height:1.55}
+#plan .phase b{display:inline-block;margin-top:10px;color:var(--text);font-size:13px;font-weight:500}
+#plan .card{margin-top:18px!important;padding:30px;background:var(--panel)}
+#plan .card-head h3{font-size:22px;font-weight:500;letter-spacing:-.03em}
+#plan .card-head>.muted{color:var(--muted);font-size:11px;letter-spacing:.08em}
+#plan .card p{color:var(--muted);line-height:1.6}
+#plan .arc-calendar-card{margin-top:18px!important}
+#plan .calendar-intro{margin:6px 0 0;font-size:13px}
+#plan .calendar-range{white-space:nowrap}
+#plan .calendar-legend{display:flex;flex-wrap:wrap;gap:18px;margin:-4px 0 22px;color:var(--muted);font-size:12px}
+#plan .calendar-legend span{display:flex;align-items:center;gap:7px}
+#plan .calendar-legend i{width:12px;height:12px;display:inline-grid;place-items:center;border-radius:50%;background:var(--accent)}
+#plan .calendar-legend .legend-recovery{background:#fff;border:1px solid var(--line)}
+#plan .calendar-legend .legend-complete{font-size:9px;font-style:normal;font-weight:500}
+#plan .calendar{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+#plan .calendar-month{min-width:0;padding:18px;border-radius:20px;background:#fff}
+#plan .calendar-month h4{margin:0 0 14px;font-size:16px;font-weight:500;letter-spacing:-.02em}
+#plan .calendar-month h4 span{color:var(--muted);font-weight:400}
+#plan .calendar-weekdays,#plan .month-days{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:4px}
+#plan .calendar-weekdays{margin-bottom:5px;text-align:center;color:var(--muted);font-size:10px}
+#plan .calday-empty{min-height:49px}
+#plan .calday{position:relative;display:flex;min-width:0;min-height:49px;flex-direction:column;align-items:flex-start;justify-content:space-between;padding:5px 4px;border:1px solid transparent;border-radius:10px;background:#f5f5eb}
+#plan .calday.strength{background:#eff7dc}
+#plan .calday.today{outline:2px solid var(--text);outline-offset:1px;z-index:1}
+#plan .calday.done{border-color:#aacd70}
+#plan .calday-date{font-size:11px;font-weight:500;line-height:1}
+#plan .calday-type{max-width:100%;overflow:hidden;color:var(--muted);font-size:8px;line-height:1;white-space:nowrap}
+#plan .calday.strength .calday-type{color:var(--text);font-weight:500}
+#plan .calday-mark{position:absolute;right:4px;top:3px;color:var(--text);font-size:9px}
+#journal .journal{max-width:860px;padding:36px;background:var(--panel)}
+#journal .card-head{align-items:flex-start}
+#journal .card-head h3{font-size:22px;font-weight:500}
+#journal .card-head .muted{color:var(--muted);font-size:12px}
+#journal textarea{min-height:260px;padding:20px;border:1px solid var(--line);border-radius:18px;background:#fff;color:var(--text);font-size:16px;line-height:1.6}
+#journal textarea:focus{border-color:#919183;outline:2px solid rgba(190,255,80,.55);outline-offset:2px}
+#journal .actions{justify-content:flex-end}
+#profile>.card{max-width:780px;padding:36px;background:var(--panel)}
+#profile .card-head h3{font-size:22px;font-weight:500}
+#profile .card-head .muted,#profile .profile-note{color:var(--muted)}
+#profile .profile-grid{gap:20px}
+#profile .profile-field{gap:8px}
+#profile .profile-field label{color:var(--text);font-size:13px;font-weight:500}
+#profile .profile-field input,#profile .profile-field select{min-height:48px;padding:12px 14px;border:1px solid var(--line);border-radius:8px;background:#fff;color:var(--text)}
+#profile .profile-field input:focus,#profile .profile-field select:focus{border-color:#919183;outline:2px solid rgba(190,255,80,.55);outline-offset:2px}
+#profile .profile-actions{gap:12px}
+#profile .danger-button{border:1px solid var(--line);border-radius:28px;background:transparent;color:var(--text);padding:12px 17px;font-weight:500}
+#profile .profile-status{color:var(--muted)}
+.auth,.modal{background:rgba(20,20,15,.4);backdrop-filter:blur(8px)}
+.auth-card,.modal-card{border:0;border-radius:28px;background:#fff;padding:32px;box-shadow:none}
+.auth-card h2{color:var(--text);font-size:32px;font-weight:500;letter-spacing:-.03em}
+.auth-card p{color:var(--muted)}
+.auth-card .eyebrow{color:var(--muted)}
+.auth-card label{color:var(--text);font-weight:500}
+.auth-card input{border:1px solid var(--line);border-radius:8px;background:#fff;color:var(--text)}
+.auth-card input:focus{border-color:#919183;outline:2px solid rgba(190,255,80,.55);outline-offset:2px}
+.auth-tabs{background:var(--panel);border-radius:9999px;padding:4px}
+.auth-tab{border-radius:9999px;color:var(--muted);font-weight:400}
+.auth-tab.active{background:#fff;color:var(--text);box-shadow:none;font-weight:500}
+.auth-status{color:var(--muted)}
+.account-menu{position:absolute;top:calc(100% + 10px);right:0;z-index:30;display:none;width:270px;padding:18px;border:1px solid var(--line);border-radius:20px;background:#fff;box-shadow:none}
+.account-menu.open{display:block}
+.account-btn.is-signed-in::after{content:'⌄';display:inline-block;margin-left:10px;font-size:15px;line-height:0}
+.account-menu-person{padding:2px 4px 14px;border-bottom:1px solid var(--line)}
+.account-menu-person strong,.account-menu-person span{display:block;max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.account-menu-person strong{color:var(--text);font-size:14px;font-weight:500}
+.account-menu-person span{margin-top:3px;color:var(--muted);font-size:12px}
+.account-menu-actions{display:grid;gap:4px;padding-top:10px}
+.account-menu-actions button{width:100%;margin:0;padding:11px 10px;border:0;border-radius:12px;background:transparent;color:var(--text);font-size:14px;font-weight:500;text-align:left}
+.account-menu-actions button:hover{background:var(--panel)}
+.exercise-image-wrap{border-color:var(--line);border-radius:18px;background:var(--panel)}
+.exercise-cue{color:var(--muted)}
+#modal .modal-actions{background:#fff}
+.toast{border-radius:9999px;background:#30302a;color:#fff;font-weight:500}
+button:focus-visible,a:focus-visible{outline:2px solid var(--text);outline-offset:3px}
+@media(max-width:900px){#plan .calendar{grid-template-columns:repeat(2,minmax(0,1fr))}#plan .calendar-month:last-child{grid-column:1/-1}}
+@media(max-width:680px){.page:not(#today)>.top{min-height:0;margin-bottom:16px;padding:28px 24px;border-radius:24px}.page:not(#today)>.top .hero h2,#progress .progress-intro h2{font-size:clamp(42px,11vw,58px)}#progress .progress-intro{padding:28px 24px;border-radius:24px}#progress .card{padding:20px;border-radius:24px}#progress .dashboard-week{gap:4px}#progress .dashboard-day{min-height:130px;padding:10px 3px}#progress .dashboard-day small{font-size:8px}#progress .week-summary{gap:10px}#plan .plan-grid{grid-template-columns:1fr}#plan .phase{min-height:0;padding:24px}#plan .phase h3{margin-top:16px}#plan .card{padding:20px!important;border-radius:24px}#plan .calendar{grid-template-columns:1fr}#plan .calendar-month:last-child{grid-column:auto}#plan .calendar-month{padding:16px}#plan .calday-empty,#plan .calday{min-height:48px}#plan .calday-type{font-size:9px}#journal .journal,#profile>.card{padding:22px;border-radius:24px}#journal .card-head{gap:8px}#journal .card-head .muted{max-width:110px;text-align:right}#journal textarea{min-height:220px;padding:16px}.auth-card,.modal-card{padding:24px;border-radius:24px}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;transition-duration:.01ms!important}}
+.auth{position:fixed;inset:0;display:none;grid-template-columns:minmax(0,1fr) minmax(0,1fr);grid-template-areas:"form visual";align-items:stretch;justify-content:stretch;gap:0;overflow-y:auto;padding:0;background:var(--bg);backdrop-filter:none;z-index:50}
+.auth.open{display:grid}
+.auth-card{grid-area:form;align-self:center;justify-self:center;width:min(402px,calc(100% - 48px));max-height:100%;overflow:auto;margin:auto 0;padding:0;border:0;border-radius:0;background:transparent;box-shadow:none}
+.auth-card h2{margin:12px 0 14px;font-size:36px;line-height:1.08;letter-spacing:-.045em}
+.auth-card>p{max-width:390px;margin:0;color:var(--muted);font-size:15px;line-height:1.55}
+.auth-card .eyebrow{font-size:10px;font-weight:600;letter-spacing:.12em}
+.auth-card label{display:grid;gap:7px;margin-top:16px;font-size:12px;font-weight:500}
+.auth-card input{box-sizing:border-box;width:100%;min-height:48px;padding:12px;border:1px solid var(--line);border-radius:9px;background:#fff;font:inherit;font-size:14px}
+.auth-tabs{margin:20px 0 4px;border-radius:9999px}
+.auth-tab{min-height:42px}
+.auth-submit,.auth-close{min-height:50px;border-radius:9999px}
+.auth-close{margin-top:8px;border:1px solid var(--line);background:#fff}
+.auth-status{min-height:18px}
+.auth-visual{grid-area:visual;position:relative;isolation:isolate;display:flex;flex-direction:column;justify-content:space-between;gap:24px;min-width:0;overflow:hidden;padding:clamp(24px,3.2vw,48px);background:var(--accent);color:var(--text)}
+.auth-visual::before,.auth-visual::after{position:absolute;z-index:-1;content:"";pointer-events:none;border:1px solid rgba(20,20,15,.12);border-radius:50%;aspect-ratio:1}
+.auth-visual::before{width:min(60vw,760px);right:-28%;top:16%}
+.auth-visual::after{width:min(42vw,540px);right:-16%;top:26%}
+.auth-visual-top,.auth-visual-bottom{display:flex;align-items:center;justify-content:space-between;gap:16px;min-width:0}
+.auth-visual-logo{display:block;width:156px;height:auto}
+.auth-visual-badge,.auth-visual-bottom span{max-width:48%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:10px;font-weight:600;letter-spacing:.11em}
+.auth-visual-copy{max-width:650px;min-width:0}
+.auth-visual-copy .eyebrow{margin:0 0 14px;font-size:10px;font-weight:600;letter-spacing:.12em}
+.auth-visual-copy h2{width:100%;max-width:100%;margin:0;font-size:clamp(38px,4vw,62px);font-weight:500;line-height:.96;letter-spacing:-.055em;overflow-wrap:anywhere}
+.auth-visual-copy p:last-child{max-width:420px;margin:16px 0 0;font-size:15px;line-height:1.5}
+.auth-visual-photo{position:relative;flex:none;width:100%;min-width:0;aspect-ratio:3/2;margin:0;overflow:hidden;border:1px solid rgba(20,20,15,.16);border-radius:24px;background:#e8e8e5}
+.auth-visual-photo img{display:block;width:100%;height:100%;min-width:0;min-height:0;object-fit:cover}
+.auth-visual-photo figcaption{position:absolute;right:16px;bottom:16px;left:16px;display:flex;justify-content:space-between;gap:12px;padding:12px 14px;border-radius:9999px;background:rgba(255,255,255,.92);font-size:10px;font-weight:600;letter-spacing:.08em}
+.auth-visual-bottom{font-size:10px}
+@media(max-width:760px){.auth{grid-template-columns:1fr;grid-template-rows:auto 1fr;grid-template-areas:"visual" "form"}.auth-card{align-self:start;width:min(430px,calc(100% - 40px));max-height:none;margin:0 auto;padding:32px 0 44px}.auth-visual{min-height:0;gap:16px;padding:22px 24px 20px}.auth-visual-top{min-height:28px}.auth-visual-logo{width:128px}.auth-visual-copy{max-width:520px}.auth-visual-copy .eyebrow{margin-bottom:8px;font-size:9px}.auth-visual-copy h2{font-size:clamp(34px,8vw,52px)}.auth-visual-copy p:last-child{margin-top:8px;font-size:13px}.auth-visual-photo{width:min(100%,520px);aspect-ratio:2.5/1;border-radius:16px}.auth-visual-photo img{object-position:center 42%}.auth-visual-photo figcaption{right:8px;bottom:8px;left:8px;padding:8px 10px;font-size:8px}.auth-visual-bottom{display:none}}
 </style>
-<link rel="stylesheet" href="progress.css">
 </head>
 <body>
 <div class="app">
 <aside class="sidebar">
-  <div class="brand"><div><small>92 DAY CHALLENGE</small><h1>WINTER ARC</h1></div><button id="accountButton" class="account-btn">Sign in</button></div>
+  <div class="brand"><img class="brand-logo" src="./assets/winter-arc-logo.svg" alt="Winter Arc" width="461" height="112"><div class="arc-meta"><div class="label">Arc progress</div><strong id="sideProgress">Day 1 / 92</strong><div class="bar"><i id="sideBar"></i></div></div></div>
   <nav class="nav">
     <button class="active" data-page="today">Today</button>
     <button data-page="progress">Progress</button>
     <button data-page="plan">Plan</button>
     <button data-page="journal">Journal</button>
-    <button data-page="profile">Profile</button>
   </nav>
-  <div class="arc-meta"><div class="label">Arc progress</div><strong id="sideProgress">Day 1 / 92</strong><div class="bar"><i id="sideBar"></i></div></div>
+  <div class="account-area"><button id="accountButton" class="account-btn" aria-haspopup="true" aria-expanded="false" aria-controls="accountMenu">Sign in</button><div class="account-menu" id="accountMenu" aria-label="Account options"><div class="account-menu-person"><strong id="accountMenuName"></strong><span id="accountEmail"></span></div><div class="account-menu-actions"><button id="profileSettings" type="button">Profile settings</button><button id="signOut" type="button">Log out</button></div></div></div>
 </aside>
 <main class="main">
 <section id="today" class="page active"><p id="cloudNotice" role="status"></p>
@@ -74,6 +281,7 @@ body{background:radial-gradient(1000px 600px at 70% -10%,#dff2fc 0%,transparent 
   <div class="grid">
     <div class="card today-card">
       <div class="mission"><div><div class="muted" style="font-size:12px">TODAY'S MISSION</div><div class="big" id="taskCount">0 / 5</div></div><span class="pill">BEGINNER</span></div>
+      <div class="today-progress" role="progressbar" aria-label="Today's check-ins" aria-valuemin="0" aria-valuemax="6" aria-valuenow="0" aria-valuetext="0 of 6 check-ins complete"><i id="todayProgressBar"></i></div>
       <div class="tasks" id="tasks"></div>
     </div>
     <div class="card">
@@ -100,11 +308,11 @@ body{background:radial-gradient(1000px 600px at 70% -10%,#dff2fc 0%,transparent 
   <div class="top"><div class="hero"><div class="eyebrow">THE ROADMAP</div><h2>92 days. Three phases.</h2><p>Difficulty increases slowly. We are building a lifestyle, not chasing exhaustion.</p></div></div>
   <div class="plan-grid"><div class="phase"><div class="num">01 · OCTOBER</div><h3>Foundation</h3><p>Strength on Tuesday, Thursday, and Saturday. The first two weeks use one gentle circuit; then move to two rounds.</p><b>1 → 2 rounds</b></div><div class="phase"><div class="num">02 · NOVEMBER</div><h3>Build</h3><p>Keep three strength days and two rounds. Add a small number of reps every two weeks as it feels manageable.</p><b>Gradual rep increases</b></div><div class="phase"><div class="num">03 · DECEMBER</div><h3>Transform</h3><p>Continue the same rhythm and gradual progression. Recovery stays part of the plan.</p><b>2 steady rounds</b></div></div>
   <div class="card" style="margin-top:18px"><div class="card-head"><h3>Your weekly rhythm</h3><span class="muted">6 check-ins every day</span></div><p class="muted" style="margin:0">Strength training Tuesday, Thursday, and Saturday. The other four days swap the workout check-in for Recovery: take an easy walk, do gentle mobility, or rest. Keep the effort comfortable and scale a movement down whenever you need to.</p></div>
-  <div class="card" style="margin-top:18px"><div class="card-head"><h3>October calendar</h3><span class="muted">Day 1 starts today</span></div><div class="calendar" id="calendar"></div></div>
+  <div class="card arc-calendar-card"><div class="card-head"><div><h3>The 92-day training rhythm</h3><p class="muted calendar-intro">A clear view of strength, recovery, and completed days.</p></div><span class="muted calendar-range">OCT 1 — DEC 31</span></div><div class="calendar-legend"><span><i class="legend-strength"></i>Strength</span><span><i class="legend-recovery"></i>Recovery</span><span><i class="legend-complete">✓</i>Complete</span></div><div class="calendar" id="calendar"></div></div>
 </section>
 <section id="journal" class="page">
   <div class="top"><div class="hero"><div class="eyebrow">DAILY REFLECTION</div><h2>Leave a record of the arc.</h2><p>One honest paragraph is enough.</p></div></div>
-  <div class="card journal"><div class="card-head"><h3>Day 1 journal</h3><span class="muted">Saved automatically</span></div><textarea id="journalText" placeholder="Why am I doing this?\n\nBy December 31, I want to be...\n\nToday I feel...\n\nOne thing I'm proud of..."></textarea><div class="actions"><button class="primary" id="saveJournal">Save entry</button></div></div>
+  <div class="card journal"><div class="card-head"><h3>Day 1 journal</h3><span class="muted">Saved automatically</span></div><textarea id="journalText" placeholder="Why am I doing this?&#10;&#10;By December 31, I want to be...&#10;&#10;Today I feel...&#10;&#10;One thing I'm proud of..."></textarea><div class="actions"><button class="primary" id="saveJournal">Save now</button></div></div>
 </section>
 <section id="profile" class="page">
   <div class="top"><div class="hero"><div class="eyebrow">YOUR PROFILE</div><h2>Know your starting point.</h2><p>Keep your basic details here so your Winter Arc can stay personal and consistent.</p></div></div>
@@ -117,17 +325,17 @@ body{background:radial-gradient(1000px 600px at 70% -10%,#dff2fc 0%,transparent 
       <div class="profile-field full"><label>Height</label><div class="height-fields"><input id="profileHeightFeet" type="number" min="1" max="8" step="1" inputmode="numeric" placeholder="Feet"><input id="profileHeightInches" type="number" min="0" max="11" step="1" inputmode="numeric" placeholder="Inches"></div></div>
       <div class="profile-field"><label for="profileWeight">Weight (kg)</label><input id="profileWeight" type="number" min="1" max="500" step="0.1" inputmode="decimal" placeholder="e.g. 70"></div>
     </div>
-    <div class="profile-actions"><button class="primary" id="saveProfile">Save changes</button><button class="danger-button" id="profileSignOut">Log out</button></div>
+    <div class="profile-actions"><button class="primary" id="saveProfile">Save changes</button></div>
     <div class="profile-status" id="profileStatus"></div>
     <div class="profile-note">Your profile is synced to your Winter Arc account.</div>
   </div>
 </section>
 </main></div>
-<div class="auth" id="authPanel">
+<div class="auth open" id="authPanel">
   <div class="auth-card">
     <div class="eyebrow">CLOUD SYNC</div>
     <h2>Keep your arc with you.</h2>
-    <p class="muted">Create an account to sync your Winter Arc across devices. Your local progress stays available too.</p>
+    <p class="muted">Sign in or create an account to sync your Winter Arc across devices. Your local progress stays available too.</p>
     <div class="auth-tabs"><button class="auth-tab active" data-auth="signin">Sign in</button><button class="auth-tab" data-auth="signup">Create account</button></div>
     <label>Email<input id="authEmail" type="email" autocomplete="email" placeholder="you@example.com"></label>
     <label>Password<input id="authPassword" type="password" autocomplete="current-password" placeholder="At least 6 characters"></label>
@@ -136,10 +344,12 @@ body{background:radial-gradient(1000px 600px at 70% -10%,#dff2fc 0%,transparent 
     <button class="secondary auth-close" id="authClose">Not now</button>
     <div class="auth-status" id="authStatus"></div>
   </div>
-</div>
-<div class="account-menu" id="accountMenu">
-  <div><strong id="accountEmail"></strong><span>Cloud synced</span></div>
-  <button id="signOut">Sign out</button>
+  <aside class="auth-visual" aria-label="Winter Arc 92-day challenge">
+    <div class="auth-visual-top"><img class="auth-visual-logo" src="./assets/winter-arc-logo.svg" alt=""><span class="auth-visual-badge">YOUR 92-DAY CHALLENGE</span></div>
+    <div class="auth-visual-copy"><p class="eyebrow">CONSISTENCY OVER INTENSITY</p><h2>Show up today.<br>See who you become.</h2><p>Small steps, steady strength, and a season of progress built one day at a time.</p></div>
+    <figure class="auth-visual-photo"><img src="./assets/exercises/bodyweight-squats.png" alt="" width="1536" height="1024" decoding="async"><figcaption><span>ONE DAY AT A TIME</span><span>92 DAYS</span></figcaption></figure>
+    <div class="auth-visual-bottom"><span>YOUR ARC STARTS HERE</span><span>01 — 92</span></div>
+  </aside>
 </div>
 <div class="modal" id="modal"><div class="modal-card"><div class="modal-top"><div><div class="eyebrow">WORKOUT MODE</div><h3 id="modalTitle" style="font-size:25px;margin:5px 0">Bodyweight Squats</h3></div><button class="close" id="closeModal">×</button></div><div class="exercise-progress" id="exerciseProgress">1 / 7 · 10 reps</div><figure class="exercise-reference"><div class="exercise-image-wrap"><img class="exercise-image" id="exerciseImage" alt="" width="1536" height="1024" decoding="async"><span class="exercise-image-fallback" id="exerciseImageFallback" hidden>Image unavailable. Follow the form cue below.</span></div><figcaption class="exercise-cue" id="exerciseCue"></figcaption></figure><div class="timer" id="timer">10</div><div class="modal-actions"><button class="secondary" id="skipRest">Skip</button><button class="primary" id="nextExercise">Done</button></div></div></div>
 <dialog id="dayDetails" aria-labelledby="detailTitle"><div class="detail-heading"><div><div class="eyebrow" id="detailStatus"></div><h3 id="detailTitle"></h3></div><button class="close" id="closeDetails" aria-label="Close day details">×</button></div><ul class="detail-list" id="detailHabits"></ul><h4>Journal</h4><p class="detail-journal" id="detailJournal"></p></dialog>
@@ -174,26 +384,28 @@ function renderExerciseReference(name){
  document.getElementById('exerciseCue').textContent=reference.cue;
 }
 
-function renderTasks(){const plan=ArcWorkoutPlan.forDate(currentKey());const todayTasks=tasks.map(([k,t,s])=>k==='workout'?(plan.mode==='recovery'?[k,'Recovery','Easy walk, gentle mobility, or full rest']: [k,'Workout',`${plan.rounds} ${plan.rounds===1?'round':'rounds'} · full-body strength`]):[k,t,s]);const el=document.getElementById('tasks'); el.innerHTML=todayTasks.map(([k,t,s])=>{const done=isDone(k);const action=done?`Unmark ${t}`:`Mark ${t} complete`;return `<div class="task ${done?'done':''}"><button type="button" class="check" data-task="${k}" aria-label="${action}" aria-pressed="${done}">${done?'✓':''}</button><div class="task-text"><strong>${t}</strong><span>${s}</span></div><button type="button" data-task="${k}" aria-label="${action}" aria-pressed="${done}">${done?'Done':'Mark'}</button></div>`}).join('');el.querySelectorAll('[data-task]').forEach(b=>b.onclick=()=>toggle(b.dataset.task));document.getElementById('taskCount').textContent=`${todayTasks.filter(x=>isDone(x[0])).length} / ${todayTasks.length}`}
+function renderTasks(){const plan=ArcWorkoutPlan.forDate(currentKey());const todayTasks=tasks.map(([k,t,s])=>k==='workout'?(plan.mode==='recovery'?[k,'Recovery','Easy walk, gentle mobility, or full rest']: [k,'Workout',`${plan.rounds} ${plan.rounds===1?'round':'rounds'} · full-body strength`]):[k,t,s]);const el=document.getElementById('tasks'); el.innerHTML=todayTasks.map(([k,t,s])=>{const done=isDone(k);const action=done?`Unmark ${t}`:`Mark ${t} complete`;return `<div class="task ${done?'done':''}"><button type="button" class="check" data-task="${k}" aria-label="${action}" aria-pressed="${done}">${done?'✓':''}</button><div class="task-text"><strong>${t}</strong><span>${s}</span></div><button type="button" data-task="${k}" aria-label="${action}" aria-pressed="${done}">${done?'Done':'Mark'}</button></div>`}).join('');el.querySelectorAll('[data-task]').forEach(b=>b.onclick=()=>toggle(b.dataset.task));const checked=todayTasks.filter(x=>isDone(x[0])).length,meter=document.querySelector('#today .today-progress');document.getElementById('taskCount').textContent=`${checked} / ${todayTasks.length}`;meter.setAttribute('aria-valuenow',checked);meter.setAttribute('aria-valuetext',`${checked} of ${todayTasks.length} check-ins complete`);document.getElementById('todayProgressBar').style.width=`${Math.round(checked/todayTasks.length*100)}%`}
 function renderWorkout(){const plan=ArcWorkoutPlan.forDate(currentKey());const title=document.getElementById('workoutTitle'),duration=document.getElementById('workoutDuration'),note=document.getElementById('workoutNote'),start=document.getElementById('startWorkout');if(plan.mode==='recovery'){workouts=[];title.textContent='Today is a recovery day';duration.textContent='Easy by choice';document.getElementById('workoutList').innerHTML='<div class="exercise"><b>Easy walk or gentle mobility</b><span>10–15 min</span></div><div class="exercise"><b>Or take a full rest day</b><span>your choice</span></div>';note.textContent='Recovery is today’s training plan. Keep it comfortable; rest counts.';start.hidden=true;return}workouts=plan.exercises.map(x=>[x.name,x.reps]);title.textContent='Today’s strength session';duration.textContent=`~${plan.rounds===1?'20–25':'35–40'} min`;note.textContent=`${plan.rounds} ${plan.rounds===1?'round':'rounds'} · Tuesday, Thursday, Saturday · rest between rounds as needed.`;start.hidden=false;document.getElementById('workoutList').innerHTML=workouts.map(x=>`<div class="exercise"><b>${x[0]}</b><span>${x[1]}</span></div>`).join('')}
-function renderWeek(){const names=['M','T','W','T','F','S','S'];const today=new Date();const day=today.getDay()||7;const monday=new Date(today);monday.setDate(today.getDate()-day+1);document.getElementById('week').innerHTML=names.map((n,i)=>{const d=new Date(monday);d.setDate(monday.getDate()+i);const key=ArcProgress.key(d);const done=!!state.days[key];return `<div class="day"><span>${n}</span><div class="dot ${done?'done':''} ${i===day-1?'today':''}">${done?'✓':''}</div></div>`}).join('');document.getElementById('weekCount').textContent=`${[...Array(7)].filter((_,i)=>{const d=new Date(monday);d.setDate(monday.getDate()+i);return state.days[ArcProgress.key(d)]}).length} / 7`}
-function renderCalendar(){let e=document.getElementById('calendar');let out='';const n=dayNumber();for(let d=1;d<=31;d++){let key=`2026-10-${String(d).padStart(2,'0')}`;let done=!!state.days[key];out+=`<div class="calday ${key===currentKey()?'today':''} ${done?'done':''}"><small>${d}</small>${done?'<div style="margin-top:20px">✓</div>':''}</div>`}e.innerHTML=out}
+function renderWeek(){const names=['M','T','W','T','F','S','S'];const today=new Date();const day=today.getDay()||7;const monday=new Date(today);monday.setDate(today.getDate()-day+1);document.getElementById('week').innerHTML=names.map((n,i)=>{const d=new Date(monday);d.setDate(monday.getDate()+i);const key=ArcProgress.key(d);const done=!!state.days[key];const mode=ArcWorkoutPlan.forDate(key).mode;const kind=mode==='strength'?'Strength':mode==='recovery'?'Recovery':'';return `<div class="day" aria-label="${displayDate(key,{weekday:'long',month:'long',day:'numeric'})}: ${kind||'outside the arc'}${done?', complete':''}"><span>${n}</span><div class="dot ${done?'done':''} ${i===day-1?'today':''}">${done?'✓':''}</div><small class="plan-kind">${kind}</small></div>`}).join('');document.getElementById('weekCount').textContent=`${[...Array(7)].filter((_,i)=>{const d=new Date(monday);d.setDate(monday.getDate()+i);return state.days[ArcProgress.key(d)]}).length} / 7`}
+function renderCalendar(){const months=[['October',10,31],['November',11,30],['December',12,31]];document.getElementById('calendar').innerHTML=months.map(([name,month,total])=>{const first=`2026-${String(month).padStart(2,'0')}-01`;const offset=new Date(`${first}T12:00:00Z`).getUTCDay();const blanks=Array.from({length:offset},()=>'<span class="calday-empty" aria-hidden="true"></span>').join('');const days=Array.from({length:total},(_,i)=>{const day=i+1,key=`2026-${String(month).padStart(2,'0')}-${String(day).padStart(2,'0')}`,plan=ArcWorkoutPlan.forDate(key),done=!!state.days[key],kind=plan.mode==='strength'?'Strength':'Recovery',dayLabel=displayDate(key,{weekday:'long',month:'long',day:'numeric'});return `<div class="calday ${plan.mode} ${key===currentKey()?'today':''} ${done?'done':''}" role="gridcell" aria-label="${dayLabel}, ${kind}${done?', complete':''}" title="${dayLabel} · ${kind}${done?' · Complete':''}"><span class="calday-date">${day}</span><span class="calday-type">${plan.mode==='strength'?'S':'R'}</span><span class="calday-mark" aria-hidden="true">${done?'✓':''}</span></div>`}).join('');return `<article class="calendar-month"><h4>${name} <span>2026</span></h4><div class="calendar-weekdays" aria-hidden="true"><span>S</span><span>M</span><span>T</span><span>W</span><span>T</span><span>F</span><span>S</span></div><div class="month-days" role="grid" aria-label="${name} 2026">${blanks}${days}</div></article>`}).join('')}
 async function loadProfile(){if(!sb||!cloudUser)return;const id=cloudUser.id,generation=accountGeneration;try{const {data,error}=await sb.from('profiles').select('display_name,gender,date_of_birth,height_feet,height_inches,weight_kg').eq('id',id).maybeSingle();if(error)throw error;if(cloudUser?.id!==id||generation!==accountGeneration)return;if(data){profileData={name:data.display_name||'',gender:data.gender||'',date_of_birth:data.date_of_birth||'',height_feet:data.height_feet??'',height_inches:data.height_inches??'',weight_kg:data.weight_kg??''};renderProfile()}}catch(e){console.warn(e);const status=document.getElementById('profileStatus');if(status)status.textContent='Profile details could not be loaded yet.'}}
-function renderProfile(){const fields={profileName:profileData.name,profileGender:profileData.gender,profileDob:profileData.date_of_birth,profileHeightFeet:profileData.height_feet,profileHeightInches:profileData.height_inches,profileWeight:profileData.weight_kg};Object.entries(fields).forEach(([id,value])=>{const el=document.getElementById(id);if(el)el.value=value??''})}
-async function saveProfile(){if(!sb||!cloudUser){openAuth();return}const savingUser=cloudUser.id;const status=document.getElementById('profileStatus');const name=document.getElementById('profileName').value.trim();const gender=document.getElementById('profileGender').value;const date_of_birth=document.getElementById('profileDob').value||null;const height_feet=document.getElementById('profileHeightFeet').value===''?null:Number(document.getElementById('profileHeightFeet').value);const height_inches=document.getElementById('profileHeightInches').value===''?null:Number(document.getElementById('profileHeightInches').value);const weight_kg=document.getElementById('profileWeight').value===''?null:Number(document.getElementById('profileWeight').value);if(height_feet!==null&&(height_feet<1||height_feet>8)){status.textContent='Height feet must be between 1 and 8.';return}if(height_inches!==null&&(height_inches<0||height_inches>11)){status.textContent='Height inches must be between 0 and 11.';return}if(weight_kg!==null&&(weight_kg<1||weight_kg>500)){status.textContent='Weight must be between 1 and 500 kg.';return}status.textContent='Saving…';const payload={id:cloudUser.id,display_name:name||null,gender:gender||null,date_of_birth,height_feet,height_inches,weight_kg};try{const {error}=await sb.from('profiles').upsert(payload,{onConflict:'id'});if(error)throw error;if(cloudUser?.id!==savingUser)return;profileData={name,gender,date_of_birth:date_of_birth||'',height_feet:height_feet??'',height_inches:height_inches??'',weight_kg:weight_kg??''};document.getElementById('accountButton').textContent=name||cloudUser.email?.split('@')[0]||'Account';status.textContent='Profile saved.';toast('Profile saved')}catch(e){console.error(e);status.textContent=e.message?.includes('column')?'Profile database fields are not set up yet. Run profile_migration.sql in Supabase.':'Could not save profile right now.'}}
-function openProfile(){if(!cloudUser){openAuth();return}document.querySelectorAll('.nav button').forEach(x=>x.classList.toggle('active',x.dataset.page==='profile'));document.querySelectorAll('.page').forEach(p=>p.classList.toggle('active',p.id==='profile'));loadProfile();window.scrollTo(0,0)}
-function render(){renderTasks();renderWorkout();renderWeek();renderProgress();renderCalendar();document.getElementById('journalText').value=state.journal;document.getElementById('accountButton').textContent=cloudUser?(profileData.name||cloudUser.email?.split('@')[0]||'Account'):'Sign in';if(cloudUser)renderProfile()}
+function renderProfile(){const fields={profileName:profileData.name,profileGender:profileData.gender,profileDob:profileData.date_of_birth,profileHeightFeet:profileData.height_feet,profileHeightInches:profileData.height_inches,profileWeight:profileData.weight_kg};Object.entries(fields).forEach(([id,value])=>{const el=document.getElementById(id);if(el)el.value=value??''});if(cloudUser){const name=profileData.name||cloudUser.email?.split('@')[0]||'Account';document.getElementById('accountButton').textContent=name;document.getElementById('accountMenuName').textContent=profileData.name||'Your account';document.getElementById('accountEmail').textContent=cloudUser.email||'Cloud synced'}}
+async function saveProfile(){if(!sb||!cloudUser){openAuth();return}const savingUser=cloudUser.id;const status=document.getElementById('profileStatus');const name=document.getElementById('profileName').value.trim();const gender=document.getElementById('profileGender').value;const date_of_birth=document.getElementById('profileDob').value||null;const height_feet=document.getElementById('profileHeightFeet').value===''?null:Number(document.getElementById('profileHeightFeet').value);const height_inches=document.getElementById('profileHeightInches').value===''?null:Number(document.getElementById('profileHeightInches').value);const weight_kg=document.getElementById('profileWeight').value===''?null:Number(document.getElementById('profileWeight').value);if(height_feet!==null&&(height_feet<1||height_feet>8)){status.textContent='Height feet must be between 1 and 8.';return}if(height_inches!==null&&(height_inches<0||height_inches>11)){status.textContent='Height inches must be between 0 and 11.';return}if(weight_kg!==null&&(weight_kg<1||weight_kg>500)){status.textContent='Weight must be between 1 and 500 kg.';return}status.textContent='Saving…';const payload={id:cloudUser.id,display_name:name||null,gender:gender||null,date_of_birth,height_feet,height_inches,weight_kg};try{const {error}=await sb.from('profiles').upsert(payload,{onConflict:'id'});if(error)throw error;if(cloudUser?.id!==savingUser)return;profileData={name,gender,date_of_birth:date_of_birth||'',height_feet:height_feet??'',height_inches:height_inches??'',weight_kg:weight_kg??''};renderProfile();status.textContent='Profile saved.';toast('Profile saved')}catch(e){console.error(e);status.textContent=e.message?.includes('column')?'Profile database fields are not set up yet. Run profile_migration.sql in Supabase.':'Could not save profile right now.'}}
+function openProfile(){if(!cloudUser){openAuth();return}closeAccountMenu();document.querySelectorAll('.nav button').forEach(x=>x.classList.remove('active'));document.querySelectorAll('.page').forEach(p=>p.classList.toggle('active',p.id==='profile'));loadProfile();window.scrollTo(0,0)}
+function render(){renderTasks();renderWorkout();renderWeek();renderProgress();renderCalendar();document.getElementById('journalText').value=state.journal;const accountName=cloudUser?(profileData.name||cloudUser.email?.split('@')[0]||'Account'):'Sign in';document.getElementById('accountButton').textContent=accountName;document.getElementById('accountButton').classList.toggle('is-signed-in',!!cloudUser);document.getElementById('accountMenuName').textContent=profileData.name||'Your account';document.getElementById('accountEmail').textContent=cloudUser?.email||'';if(cloudUser)renderProfile();else closeAccountMenu()}
 function toast(msg){let t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),1600)}
 function openAuth(){document.getElementById('authPanel').classList.add('open');document.getElementById('authStatus').textContent=CLOUD_READY?'':'Add your Supabase keys in config.js first.'}
 function closeAuth(){document.getElementById('authPanel').classList.remove('open')}
 function setAuthMode(mode){authMode=mode;document.querySelectorAll('.auth-tab').forEach(b=>b.classList.toggle('active',b.dataset.auth===mode));document.getElementById('nameField').classList.toggle('hidden',mode!=='signup');document.getElementById('authSubmit').textContent=mode==='signup'?'Create account':'Sign in';document.getElementById('authPassword').autocomplete=mode==='signup'?'new-password':'current-password'}
 async function submitAuth(){const email=document.getElementById('authEmail').value.trim();const password=document.getElementById('authPassword').value;const name=document.getElementById('authName').value.trim();const status=document.getElementById('authStatus');if(!sb){status.textContent='Cloud is not configured yet.';return}status.textContent='Working…';let res;if(authMode==='signup')res=await sb.auth.signUp({email,password,options:{data:{full_name:name}}});else res=await sb.auth.signInWithPassword({email,password});if(res.error){status.textContent=res.error.message;return}if(authMode==='signup'&&!res.data.session){status.textContent='Account created. Check your email to verify it, then sign in.';return}status.textContent='Signed in.';closeAuth()}
-async function signOut(){if(sb){const {error}=await sb.auth.signOut();if(error){toast('Could not sign out. Please try again.');return}}applySession(null);document.querySelector('[data-page="today"]').click();openAuth();toast('Signed out')}
+async function signOut(){if(sb){const {error}=await sb.auth.signOut();if(error){toast('Could not sign out. Please try again.');return}}closeAccountMenu();applySession(null);closeAuth();document.querySelector('[data-page="today"]').click();toast('Signed out')}
 let receivedAuthEvent=false;
 if(sb)sb.auth.onAuthStateChange((_event,session)=>{receivedAuthEvent=true;setTimeout(()=>applySession(session),0)});
 document.querySelectorAll('.nav button').forEach(b=>b.onclick=()=>{if(['profile','progress'].includes(b.dataset.page)&&!cloudUser){openAuth();return}document.querySelectorAll('.nav button').forEach(x=>x.classList.remove('active'));b.classList.add('active');document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));document.getElementById(b.dataset.page).classList.add('active');if(b.dataset.page==='profile')loadProfile();window.scrollTo(0,0)});
 document.getElementById('saveJournal').onclick=()=>{if(!editableToday())return;state.journal=document.getElementById('journalText').value;save();toast(cloudUser?'Journal saved & syncing':'Journal saved')};document.getElementById('journalText').addEventListener('input',()=>{if(!editableToday())return;state.journal=document.getElementById('journalText').value;queueSync()});
-document.getElementById('accountButton').onclick=()=>{if(cloudUser){openProfile()}else openAuth()};document.getElementById('authClose').onclick=closeAuth;document.getElementById('authSubmit').onclick=submitAuth;document.querySelectorAll('.auth-tab').forEach(b=>b.onclick=()=>setAuthMode(b.dataset.auth));document.getElementById('signOut').onclick=signOut;document.getElementById('profileSignOut').onclick=signOut;document.getElementById('saveProfile').onclick=saveProfile;document.getElementById('accountEmail').textContent=cloudUser?.email||'';
+function closeAccountMenu(){const menu=document.getElementById('accountMenu'),button=document.getElementById('accountButton');menu.classList.remove('open');button.setAttribute('aria-expanded','false')}
+function toggleAccountMenu(){if(!cloudUser){openAuth();return}const menu=document.getElementById('accountMenu'),button=document.getElementById('accountButton'),open=!menu.classList.contains('open');menu.classList.toggle('open',open);button.setAttribute('aria-expanded',String(open))}
+document.getElementById('accountButton').onclick=toggleAccountMenu;document.getElementById('profileSettings').onclick=openProfile;document.addEventListener('click',e=>{if(!e.target.closest('.account-area'))closeAccountMenu()});document.addEventListener('keydown',e=>{if(e.key==='Escape'&&document.getElementById('accountMenu').classList.contains('open')){closeAccountMenu();document.getElementById('accountButton').focus()}});document.getElementById('authClose').onclick=closeAuth;document.getElementById('authSubmit').onclick=submitAuth;document.querySelectorAll('.auth-tab').forEach(b=>b.onclick=()=>setAuthMode(b.dataset.auth));document.getElementById('signOut').onclick=signOut;document.getElementById('saveProfile').onclick=saveProfile;
 let idx=0,round=1,timer=null,seconds=0,isRoundRest=false;const modal=document.getElementById('modal');const exerciseFigure=document.querySelector('.exercise-reference');function openWorkout(){const plan=ArcWorkoutPlan.forDate(currentKey());if(plan.mode!=='strength')return;idx=0;round=1;isRoundRest=false;showExercise();modal.classList.add('open')}function runTimer(value){seconds=value;document.getElementById('timer').textContent=seconds;clearInterval(timer);timer=setInterval(()=>{seconds--;document.getElementById('timer').textContent=Math.max(0,seconds);if(seconds<=0)clearInterval(timer)},1000)}function showExercise(){isRoundRest=false;const [name,rep]=workouts[idx],plan=ArcWorkoutPlan.forDate(currentKey());exerciseFigure.style.display='';document.getElementById('modalTitle').textContent=name;renderExerciseReference(name);document.getElementById('exerciseProgress').textContent=`Exercise ${idx+1} / ${workouts.length} · Round ${round} / ${plan.rounds} · ${rep}`;document.getElementById('skipRest').textContent='Skip';document.getElementById('nextExercise').textContent='Done';runTimer(rep.includes('sec')?parseInt(rep):10)}function startRoundRest(){isRoundRest=true;clearInterval(timer);exerciseFigure.style.display='none';document.getElementById('modalTitle').textContent='Round complete';document.getElementById('exerciseProgress').textContent=`Take up to 45 seconds before round ${round+1}. Start sooner if you feel ready.`;document.getElementById('skipRest').textContent='Skip rest';document.getElementById('nextExercise').textContent=`Start round ${round+1}`;runTimer(45)}document.getElementById('startWorkout').onclick=openWorkout;document.getElementById('closeModal').onclick=()=>{clearInterval(timer);modal.classList.remove('open')};document.getElementById('skipRest').onclick=next;document.getElementById('nextExercise').onclick=next;function next(){if(isRoundRest){round++;idx=0;showExercise();return}if(idx<workouts.length-1){idx++;showExercise();return}const plan=ArcWorkoutPlan.forDate(currentKey());if(round<plan.rounds){startRoundRest();return}clearInterval(timer);modal.classList.remove('open');if(!isDone('workout'))toggle('workout');toast('Workout complete. Day is in the books.')}
 render();
 document.getElementById('closeDetails').onclick=()=>document.getElementById('dayDetails').close();
