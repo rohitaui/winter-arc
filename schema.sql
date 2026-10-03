@@ -4,21 +4,30 @@ create table if not exists public.profiles (
   display_name text,
   gender text,
   date_of_birth date,
+  age smallint check (age is null or age between 13 and 100),
   height_feet smallint check (height_feet is null or height_feet between 1 and 8),
   height_inches smallint check (height_inches is null or height_inches between 0 and 11),
   weight_kg numeric(5,2) check (weight_kg is null or weight_kg between 1 and 500),
+  arc_preferences jsonb not null default '{}'::jsonb,
+  onboarding_completed boolean not null default true,
   created_at timestamptz not null default now()
 );
 
 -- Safe migration for existing Winter Arc projects
 alter table public.profiles add column if not exists gender text;
 alter table public.profiles add column if not exists date_of_birth date;
+alter table public.profiles add column if not exists age smallint;
 alter table public.profiles add column if not exists height_feet smallint;
 alter table public.profiles add column if not exists height_inches smallint;
 alter table public.profiles add column if not exists weight_kg numeric(5,2);
+alter table public.profiles add column if not exists arc_preferences jsonb not null default '{}'::jsonb;
+alter table public.profiles add column if not exists onboarding_completed boolean not null default true;
 
 DO $$
 BEGIN
+  IF NOT EXISTS (SELECT 1 FROM pg_constraint WHERE conname = 'profiles_age_check') THEN
+    ALTER TABLE public.profiles ADD CONSTRAINT profiles_age_check CHECK (age IS NULL OR age BETWEEN 13 AND 100);
+  END IF;
   IF NOT EXISTS (SELECT 1 FROM pg_constraint WHERE conname = 'profiles_height_feet_check') THEN
     ALTER TABLE public.profiles ADD CONSTRAINT profiles_height_feet_check CHECK (height_feet IS NULL OR height_feet BETWEEN 1 AND 8);
   END IF;
@@ -60,8 +69,8 @@ language plpgsql
 security definer set search_path = public
 as $$
 begin
-  insert into public.profiles (id, display_name)
-  values (new.id, coalesce(new.raw_user_meta_data->>'full_name', split_part(new.email, '@', 1)))
+  insert into public.profiles (id, display_name, onboarding_completed)
+  values (new.id, coalesce(new.raw_user_meta_data->>'full_name', split_part(new.email, '@', 1)), false)
   on conflict (id) do nothing;
   return new;
 end;

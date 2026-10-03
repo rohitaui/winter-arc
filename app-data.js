@@ -3,13 +3,33 @@ const CONFIG=window.WINTER_ARC_CONFIG||{};
 const CLOUD_READY=!!(CONFIG.SUPABASE_URL&&CONFIG.SUPABASE_ANON_KEY&&!CONFIG.SUPABASE_ANON_KEY.includes('YOUR_')&&window.supabase);
 const sb=CLOUD_READY?window.supabase.createClient(CONFIG.SUPABASE_URL,CONFIG.SUPABASE_ANON_KEY):null;
 const TOTAL_DAYS=92;
+const DEFAULT_ARC_SETTINGS={startDate:ArcProgress.DEFAULT_START,strengthDays:[2,4,6],weekdayMinutes:30,weekendMinutes:30,fitnessLevel:'beginner'};
 let cloudUser=null,authMode='signin',syncTimer=null,progressStatus='signedOut',accountGeneration=0,loadGeneration=0;
-let profileData={name:'',gender:'',date_of_birth:'',height_feet:'',height_inches:'',weight_kg:''};
+let profileData={name:'',gender:'',date_of_birth:'',age:'',height_feet:'',height_inches:'',weight_kg:'',arc_preferences:null,onboarding_completed:true};
+function configureArc(settings={}){ArcProgress.configure({...DEFAULT_ARC_SETTINGS,...settings})}
 function emptyState(){return {tasks:{},days:{},rows:{},journals:{},journal:'',workouts:0,pending:{}}}
 // The old unowned winterArc cache is preserved, but never imported into an account.
 function readCache(id){try{const value=JSON.parse(localStorage.getItem('winterArc:v2:'+id)||'null');return value&&value.owner===id?{...emptyState(),...value}:emptyState()}catch{return emptyState()}}
 function readGuestCache(){try{const value=JSON.parse(localStorage.getItem('winterArc:guest:v2')||'null');return value&&value.owner==='guest'?{...emptyState(),...value}:emptyState()}catch{return emptyState()}}
 let state=readGuestCache();
+function hydrateGuestRows(){
+ const dates=new Set(Object.keys(state.rows||{}));
+ Object.keys(state.days||{}).forEach(date=>dates.add(date));
+ Object.keys(state.journals||{}).forEach(date=>dates.add(date));
+ Object.keys(state.tasks||{}).forEach(key=>{const separator=key.indexOf(':');if(separator===10)dates.add(key.slice(0,separator))});
+ dates.forEach(date=>{
+  if(date<ArcProgress.START||date>ArcProgress.END)return;
+  const existing=state.rows[date],habits={...(existing?.habits||{})};
+  if(habits.move===undefined&&habits.walk!==undefined)habits.move=habits.walk===true;
+  if(state.tasks[`${date}:move`]===undefined&&state.tasks[`${date}:walk`]!==undefined)state.tasks[`${date}:move`]=state.tasks[`${date}:walk`]===true;
+  tasks.forEach(([id])=>{const key=`${date}:${id}`,value=state.tasks[key];if(value!==undefined)habits[id]=value===true;else if(habits[id]!==undefined)state.tasks[key]=habits[id]===true});
+  const journal=state.journals[date]??existing?.journal??'';
+  const completed=tasks.every(([id])=>habits[id]===true);
+  state.rows[date]={user_id:null,day_number:ArcProgress.dayNumber(date),date,completed,workout_completed:habits.workout===true,habits,journal};
+  state.days[date]=completed;state.journals[date]=journal;
+ });
+}
+hydrateGuestRows();
 function writeCache(){const key=cloudUser?'winterArc:v2:'+cloudUser.id:'winterArc:guest:v2',owner=cloudUser?.id||'guest';try{localStorage.setItem(key,JSON.stringify({...state,owner}))}catch{document.getElementById('cloudNotice').textContent='Device storage is unavailable. Keep this page open until your changes sync.'}}
 function dayNumber(){return Math.max(1,Math.min(92,ArcProgress.dayNumber(ArcProgress.key())))}
 function dateKey(n=dayNumber()){return ArcProgress.dayKey(n)}
@@ -17,7 +37,7 @@ function currentKey(){return ArcProgress.key()}
 function isDone(k){return state.tasks[currentKey()+':'+k]===true}
 function applyRows(rows){
  state.rows={};state.tasks={};state.days={};state.journals={};state.workouts=0;
- rows.forEach(raw=>{const row=ArcProgress.normalize(raw);if(!row)return;state.rows[row.date]=row;state.days[row.date]=!!row.completed;state.journals[row.date]=row.journal||'';Object.entries(row.habits).forEach(([k,v])=>state.tasks[row.date+':'+k]=v===true);if(row.workout_completed)state.workouts++});
+ rows.forEach(raw=>{const row=ArcProgress.normalize(raw);if(!row)return;state.rows[row.date]=row;state.journals[row.date]=row.journal||'';Object.entries(row.habits).forEach(([k,v])=>state.tasks[row.date+':'+k]=v===true);state.days[row.date]=tasks.every(([k])=>row.habits[k]===true);if(row.workout_completed)state.workouts++});
  state.journal=state.journals[currentKey()]||'';
 }
 function cloudDayPayload(date=currentKey()){
@@ -28,15 +48,19 @@ function cloudDayPayload(date=currentKey()){
  return {user_id:cloudUser?.id||null,day_number:ArcProgress.dayNumber(date),date,completed:tasks.every(([k])=>habits[k]===true),workout_completed:habits.workout===true,habits,journal};
 }
 function editableToday(){
- if(!cloudUser){if(currentKey()<ArcProgress.START||currentKey()>ArcProgress.END){toast('Check-ins are available October 1–December 31.');return false}return true}
+ if(!cloudUser){if(currentKey()<ArcProgress.START||currentKey()>ArcProgress.END){toast('Check-ins are available during your 92-day Arc.');return false}return true}
  if(progressStatus==='loading'){toast('Your progress is still loading.');return false}
  if(progressStatus==='error'){toast('Retry loading your progress before making more changes.');return false}
- if(currentKey()<ArcProgress.START||currentKey()>ArcProgress.END){toast('Check-ins are available October 1–December 31.');return false}
+ if(currentKey()<ArcProgress.START||currentKey()>ArcProgress.END){toast('Check-ins are available during your 92-day Arc.');return false}
  return true;
 }
 function saveLocal(){writeCache();render()}
 function queueSync(date=currentKey()){
- if(!cloudUser){writeCache();document.getElementById('cloudNotice').textContent='Saved on this device. Sign in to sync across devices.';return}
+ if(!cloudUser){
+  if(date<ArcProgress.START||date>currentKey()||date>ArcProgress.END)return;
+  const payload=cloudDayPayload(date);state.rows[payload.date]=payload;state.journals[payload.date]=payload.journal;state.days[payload.date]=payload.completed;
+  writeCache();document.getElementById('cloudNotice').textContent='Saved on this device. Sign in to sync across devices.';return;
+ }
  if(progressStatus!=='ready'||date<ArcProgress.START||date>currentKey()||date>ArcProgress.END)return;
  const payload=cloudDayPayload(date);state.rows[payload.date]=payload;state.journals[payload.date]=payload.journal;state.pending[payload.date]=payload;
  writeCache();document.getElementById('cloudNotice').textContent='Saving your changes…';
@@ -86,11 +110,11 @@ async function loadCloud(){
   if(cloudUser?.id===id&&generation===accountGeneration&&request===loadGeneration){progressStatus='error';renderProgress()}
  }
 }
-function toggle(k){
+function toggle(k,showFeedback=true){
  if(!editableToday())return;
  state.tasks[currentKey()+':'+k]=!isDone(k);
  state.days[currentKey()]=tasks.every(([id])=>isDone(id));
- save();toast(isDone(k)?'Nice. Keep going.':'Unchecked. No pressure.');
+ save();if(showFeedback)toast(cloudUser?'Saved and syncing.':'Saved on this device.');
 }
 function togglePastDay(date,k){
  if(date>=currentKey()||date<ArcProgress.START||date>ArcProgress.END)return;
@@ -100,7 +124,7 @@ function togglePastDay(date,k){
  state.days[date]=tasks.every(([id])=>state.tasks[`${date}:${id}`]===true);
  const payload=cloudDayPayload(date);state.rows[date]=payload;state.journals[date]=payload.journal;
  queueSync(date);render();showDayDetails(date);
- toast(cloudUser?'Past check-in saved & syncing':'Past check-in saved on this device.');
+ toast(cloudUser?'Saved and syncing.':'Saved on this device.');
 }
 function saveJournalEntry(date,value){
  if(date<ArcProgress.START||date>currentKey()||date>ArcProgress.END)return false;
@@ -126,9 +150,8 @@ function applySession(session){
  // Only pending drafts are read from account caches. Cloud remains the source of history.
  const pending=Object.fromEntries(Object.entries(loaded.pending||{}).filter(([,r])=>user&&r.user_id===user.id));
  state=user?emptyState():loaded;state.pending=pending;
- profileData={name:'',gender:'',date_of_birth:'',height_feet:'',height_inches:'',weight_kg:''};
+ profileData={name:'',gender:'',date_of_birth:'',age:'',height_feet:'',height_inches:'',weight_kg:'',arc_preferences:null,onboarding_completed:true};
  progressStatus=user?'loading':'signedOut';
  document.getElementById('dayDetails').close();document.getElementById('cloudNotice').textContent='';
- render();
- if(user){closeAuth();loadCloud();loadProfile()}else openAuth();
+ if(user){closeAuth();loadProfile().then(data=>{if(cloudUser?.id!==user.id)return;configureArc(data?.arc_preferences||{});render();if(data?.onboarding_completed===false||(!data&&user.user_metadata?.winter_arc_onboarding==='pending'))beginOnboarding(data?.arc_preferences||{});else loadCloud()})}else{endOnboarding();configureArc();render();openAuth()}
 }

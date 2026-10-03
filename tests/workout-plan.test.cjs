@@ -1,6 +1,7 @@
 const test = require('node:test');
 const assert = require('node:assert/strict');
 const plan = require('../workout-plan.js');
+const calendar = require('../progress.js');
 
 test('keeps the opening workout and places strength on Tuesday, Thursday, Saturday', () => {
   const first = plan.forDate('2026-10-01');
@@ -39,4 +40,34 @@ test('uses only recovery days outside the three scheduled weekly strength days',
   }
   assert.equal(plan.forDate('2026-09-30').mode, 'outside');
   assert.equal(plan.forDate('2027-01-01').mode, 'outside');
+});
+
+test('configures all 92 days from the chosen start date and selected weekdays', () => {
+  calendar.configure({
+    startDate: '2027-01-15',
+    strengthDays: [1, 4, 6],
+    weekdayMinutes: 50,
+    weekendMinutes: 60,
+    fitnessLevel: 'beginner',
+  });
+
+  assert.equal(calendar.dayNumber('2027-01-15'), 1);
+  assert.equal(calendar.dayKey(92), '2027-04-16');
+  assert.equal(calendar.build([], '2027-01-14').available, 0);
+  assert.equal(plan.forDate('2027-01-16').mode, 'strength');
+  assert.equal(plan.forDate('2027-01-17').mode, 'recovery');
+  assert.equal(plan.forDate('2027-01-18').mode, 'strength');
+  assert.equal(plan.forDate('2027-01-18').minutes, 50);
+  assert.equal(plan.forDate('2027-01-16').minutes, 60);
+  assert.equal(plan.forDate('2027-02-01').rounds, 2);
+  assert.equal(plan.forDate('2027-02-06').rounds, 2);
+  assert.equal(calendar.build([], '2027-04-16').available, 92);
+
+  calendar.configure({
+    startDate: calendar.DEFAULT_START,
+    strengthDays: [2, 4, 6],
+    weekdayMinutes: 30,
+    weekendMinutes: 30,
+    fitnessLevel: 'beginner',
+  });
 });
